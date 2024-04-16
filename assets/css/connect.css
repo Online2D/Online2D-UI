@@ -1,0 +1,88 @@
+.window {
+	background-image: url('../images/backgrounds/connect.png');
+	background-repeat: no-repeat;
+}
+
+.window .wrapper .logo {
+	width: 300px;
+	height: auto;
+	display: block;
+	margin: 5rem auto;
+}
+
+.window .wrapper .connect-wrapper {
+	width: 25%;
+	height: auto;
+	padding: 1rem;
+	flow: vertical;
+	background: var(--window-bg);
+	background-repeat: repeat;
+	margin: 0px auto 1rem auto;
+}
+
+.window .wrapper .connect-wrapper .field {
+	width: *;
+	flow: vertical;
+	margin-bottom: 1.5rem;
+}
+
+.window .wrapper .connect-wrapper .field:last-child {
+	margin-bottom: 0px;
+}
+
+.window .wrapper .connect-wrapper .field .title {
+	width: *;
+	font-family: var(--font);
+	font-size: 1rem;
+	font-weight: var(--regular);
+	text-align: center;
+	color: var(--title-text);
+	text-shadow: 1px 1px 0px var(--black);
+	margin-bottom: 0.3rem;
+}
+
+.window .wrapper .connect-wrapper .field input {
+	width: 90%;
+	padding: 0;
+	font-size: 1rem;
+	color: var(--text);
+	text-align: center !important;
+	background: var(--black);
+	border: none;
+	border-radius: 2px;
+	margin: 0px *;
+}
+
+.window .wrapper .button-wrapper {
+	width: 230px;
+	height: auto;
+	flow: horizontal-wrap;
+	border-spacing: *;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.window .wrapper .button-wrapper .button {
+	width: 100px;
+	height: 40px;
+	padding: * 0px;
+	display: block;
+	flow: vertical;
+	margin-left: *;
+	margin-right: *;
+	margin-bottom: 10px;
+}
+
+.window .wrapper .website {
+	font-family: var(--font);
+	position: absolute;
+	bottom: 24px;
+	left: 50%;
+	right: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	color: var(--text-c);
+	text-shadow: 1px 1px 0px var(--black);
+	margin-left: *;
+	margin-right: *;
+}

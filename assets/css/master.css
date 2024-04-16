@@ -1,0 +1,255 @@
+@font-face {
+	font-family: "Play";
+	src: url("../fonts/Play-Regular.ttf");
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Play";
+	src: url("../fonts/Play-Bold.ttf");
+	font-weight: 600;
+}
+
+*, *::before, *::after {
+	padding: 0;
+	margin: 0;
+	outline: none !important;
+	line-height: normal;
+	word-break: break-word !important;
+	box-sizing: border-box;
+	font-rendering-mode: sub-pixel; /* Better rendering than snap-pixel */
+}
+
+/* CALCULATE RESOLUTIONS
+
+COMMON 16:9 RATIOS
+
+-1024×576 DISCARDED
+-1152×648 DISCARDED
+
+1280×720
+1366×768
+1600×900
+1920×1080
+
+COMMON 16:10 RATIOS
+
+1280×800
+1440×900
+1680×1050
+1920×1200
+
+/* END CALCULATE */
+
+/* Root itself manages all the CSS variables */
+:root {
+	--font: 'Play';
+	--regular: 400;
+	--bold: 600;
+
+	--black: #000;
+	--white: #fff;
+
+    --title-text: #a78668;
+	--text: #9e9e9e;
+
+    --outline: #4e3f3b;
+
+    --window-bg: #1a1512;
+    --window-border-bg: #271e1d;
+    --window-border-shadow: #14100f;
+
+    --mini-button-bg: #410909;
+    --mini-button-border-bg: #61534f;
+    --mini-button-shadow: #231b19;
+    --mini-button-hover-bg: #640909;
+
+    --small-border-bg: #231b19;
+    --small-border-shadow: var(--black);
+
+    --input-border: #382c28;
+
+	--window-border: url("../images/ui/window/wb.png");
+	--window-corner: url("../images/ui/window/wc.png");
+	--window-width: 1280px;
+	--window-height: 720px;
+    
+	font-family: var(--font);
+	font-size: 16px;
+	font-weight: var(--regular);
+	color: var(--text);
+	margin: 0;
+	text-selection-caret-color: #ffffff !important;
+	outline: none !important;
+	outline-color: none !important;
+	outline-width: 0 !important;
+	outline-style: none !important;
+	outline-offset: none !important;
+}
+
+html {
+	width: *;
+	height: *;
+	display: block;
+	flow: vertical;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: *;
+	height: *;
+	display: block;
+	overflow: hidden;
+	position: relative;
+	background: var(--black);
+	padding: 0;
+	margin: 0;
+	vertical-scrollbar: custom-vertical-scrollbar;
+}
+
+body button {
+	behavior: button;
+	cursor: pointer;
+	font-family: var(--font);
+	white-space: wrap !important;
+	line-height: 21px !important;
+	border: none;
+}
+
+body #main {
+	behavior: frame;
+	width: 1920px;
+	height: 1080px;
+	display: block;
+	flow: vertical;
+	position: absolute;
+	top: 0;
+	bottom: *;
+    left: 0;
+    right: *;
+	z-index: 0;
+	margin: 0 !important;
+}
+
+body .index-modal {
+	width: var(--window-width);
+	height: var(--window-height);
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: *;
+    left: 0;
+    right: *;
+    z-index: 3;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+body .index-modal.active {
+	display: block;
+}
+
+body .msgbox {
+	width: 400px;
+	height: *;
+	padding: 6px;
+	display: block;
+	flow: vertical;
+	background: var(--window-bg);
+    border: 2px solid var(--window-border-bg);
+	box-shadow: 0px 0px 10px 5px var(--black), inset 0px 0px 10px 1px var(--window-border-shadow);
+	margin: *;
+}
+
+body .msgbox .wrapper {
+	width: 100%;
+	height: 100%;
+	flow: vertical;
+	position: relative;
+}
+
+.msgbox {
+    width: 400px;
+    height: * !important;
+	min-height: 100px;
+	max-height: max-content;
+    flow: vertical;
+    display: block;
+}
+
+.msgbox .wrapper {
+    width: *;
+    height: * !important;
+	max-height: max-content;
+    flow: vertical;
+    display: block;
+}
+
+.msgbox .wrapper .header {
+    width: *;
+    height: auto;
+    min-height: 30px;
+    flow: horizontal;
+	position: relative;
+    margin-bottom: 1rem;
+}
+
+.msgbox .wrapper .header .title {
+	width: 90%;
+    flow: vertical;
+    font-family: var(--font);
+    font-size: 1.25rem;
+	text-align: center;
+	text-shadow: 1px 1px 0px var(--black);
+    color: var(--title-text);
+    padding-top: *;
+    padding-bottom: *;
+	margin: 0px auto;
+}
+
+.msgbox .wrapper .header .mini-button {
+    width: 24px;
+    height: 24px;
+	display: block;
+    flow: vertical;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+
+.msgbox .wrapper p {
+    font-size: 0.9rem;
+    font-weight: var(--regular);
+    text-align: center;
+    color: var(--text);
+	text-shadow: 1px 1px 0px var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.hidden {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	display: none;
+	overflow: hidden;
+	cursor: none;
+}
+
+.mini-button {
+	cursor: pointer;
+	flow: vertical;
+	font-size: 1rem;
+	text-align: center;
+	color: var(--text);
+    text-shadow: 1px 1px 0px var(--black);
+	background: var(--mini-button-bg);
+	box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
+	border: 1px solid var(--mini-button-border-bg);
+    border-radius: 2px;
+}
+
+.mini-button:hover {
+    color: var(--white);
+  	background: var(--mini-button-hover-bg);
+}
