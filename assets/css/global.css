@@ -9,8 +9,8 @@
 }
 
 html {
-	width: *;
-	height: *;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	flow: vertical;
 	margin: 0;
@@ -19,8 +19,8 @@ html {
 }
 
 body {
-	width: *;
-	height: *;
+	width: calc(100vw - 52px);
+	height: 100vh;
 	display: block;
 	overflow: hidden;
 	position: relative;
@@ -136,8 +136,8 @@ body button:focus {
 }
 
 body .window {
-	width: var(--window-width);
-	height: var(--window-height);
+	width: *;
+	height: *;
 	flow: vertical;
 	padding: 12px;
 	position: relative;
@@ -146,31 +146,17 @@ body .window {
 	margin: 0 !important;
 }
 
-/* Testing media queries for bigger resolutions */
-@media (width > 900px) {
-    body .window {
-        width: var(--window-width-two);
-        height: var(--window-height-two);
-        flow: vertical;
-        padding: 12px;
-        position: relative;
-        overflow: hidden;
-        z-index: 0;
-        margin: 0 !important;
-    }
-}
-
 body .window .wrapper {
-	width: 100%;
-	height: 100%;
+	width: *;
+	height: *;
 	flow: vertical;
 	position: relative;
 	z-index: 3;
 }
 
 body .modal {
-	width: var(--window-width);
-	height: var(--window-height);
+	width: 100vw;
+	height: 100vh;
 	display: none;
 	position: fixed;
 	top: 0;
@@ -236,8 +222,8 @@ body .over-main-modal.active {
 
 /* Start of the CSS of the big border */
 .big-border {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	overflow: hidden;
 	position: relative;
@@ -245,7 +231,7 @@ body .over-main-modal.active {
 }
 
 .big-border .tb::before {
-	width: var(--window-width);
+	width: 100vw;
 	height: 12px;
 	display: block;
 	position: absolute;
@@ -257,7 +243,7 @@ body .over-main-modal.active {
 }
 
 .big-border .tb::after {
-	width: var(--window-width);
+	width: 100vw;
 	height: 12px;
 	display: block;
 	position: absolute;
@@ -270,7 +256,7 @@ body .over-main-modal.active {
 }
 
 .big-border .lr::before {
-	width: var(--window-width);
+	width: 100vh;
 	height: 12px;
 	display: block;
 	position: absolute;
@@ -285,7 +271,7 @@ body .over-main-modal.active {
 }
 
 .big-border .lr::after {
-	width: var(--window-height);
+	width: 100vh;
 	height: 12px;
 	display: block;
 	position: absolute;

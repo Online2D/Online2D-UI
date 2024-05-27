@@ -1,19 +1,21 @@
 .window {
-	background-image: url('../images/backgrounds/connect.png');
+	background-image: url('../images/backgrounds/connect.jpg');
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .window .wrapper .logo {
-	width: 300px;
+	width: 250px;
 	height: auto;
 	display: block;
-	margin: 5rem auto;
+	margin: 1rem auto;
 }
 
 .window .wrapper .connect-wrapper {
-	width: 25%;
+	width: 20%;
+	min-width: 230px;
 	height: auto;
-	padding: 1rem;
+	padding: 1rem 1rem 1.5rem 1rem;
 	flow: vertical;
 	background: var(--window-bg);
 	background-repeat: repeat;

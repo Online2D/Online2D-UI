@@ -71,8 +71,8 @@ COMMON 16:10 RATIOS
 
 	--window-border: url("../images/ui/window/wb.png");
 	--window-corner: url("../images/ui/window/wc.png");
-	--window-width: 1280px;
-	--window-height: 720px;
+	--window-width: 100%;
+	--window-height: 100%;
     
 	font-family: var(--font);
 	font-size: 16px;
@@ -88,8 +88,8 @@ COMMON 16:10 RATIOS
 }
 
 html {
-	width: *;
-	height: *;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	flow: vertical;
 	margin: 0;
@@ -97,8 +97,8 @@ html {
 }
 
 body {
-	width: *;
-	height: *;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	overflow: hidden;
 	position: relative;
@@ -119,8 +119,8 @@ body button {
 
 body #main {
 	behavior: frame;
-	width: 1920px;
-	height: 1080px;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	flow: vertical;
 	position: absolute;
@@ -133,8 +133,8 @@ body #main {
 }
 
 body .index-modal {
-	width: var(--window-width);
-	height: var(--window-height);
+	width: 100vw;
+	height: 100vh;
 	display: none;
 	position: fixed;
 	top: 0;
