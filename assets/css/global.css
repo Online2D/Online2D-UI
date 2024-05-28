@@ -375,6 +375,35 @@ body .over-main-modal.active {
 	box-shadow: 0px 0px 5px 3px var(--orange-l);
 }
 
+.system {
+	display: none;
+	flow: horizontal-wrap;
+	border-radius: 4px;
+	box-shadow: 0px 0px 0px 1px var(--black), inset 0px 0px 10px 1px var(--black);
+	border: 1px solid var(--red);
+	margin: 1rem auto 0px auto
+}
+
+.system p {
+	width: 100%;
+	padding: 0.4rem 0.5rem 0.5rem 0.5rem;
+	font-size: 1rem;
+	font-weight: var(--regular);
+	text-align: center;
+	text-shadow: 1px 1px 0px var(--black);
+	word-break: break-word !important;
+	margin: 0px;
+}
+
+.system.error {
+	display: block;
+	background: var(--red);
+}
+
+.system.error p {
+	color: var(--red-l);
+}
+
 /* Custom checkbox */
 @set custom-checkbox {
 	:root{

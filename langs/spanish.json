@@ -13,10 +13,10 @@
             "tos_two": "de",
             "tandc": "términos y condiciones",
             "create_button": "Crear cuenta",
-            "empty_field": "debes completar todos los campos y aceptar los términos y condiciones para crear una cuenta.",
-            "password_not_match": "las contraseñas deben coincidir.",
-            "invalid_email": "dirección de email inválida, prueba con otra.",
-            "tos_not_accepted": "debes aceptar los términos y condiciones para crear una cuenta."
+            "error_empty_field": "debes completar todos los campos y aceptar los términos y condiciones para crear una cuenta.",
+            "error_password_not_match": "las contraseñas deben coincidir.",
+            "error_invalid_email": "dirección de email inválida, prueba con otra.",
+            "error_tos_not_accepted": "debes aceptar los términos y condiciones para crear una cuenta."
         }
     },
     "frame": {
@@ -26,7 +26,8 @@
             "create_button": "Crear",
             "enter_button": "Entrar",
             "recover_button": "Recuperar",
-            "exit_button": "Salir"
+            "exit_button": "Salir",
+            "error_empty_fields": "debes completar todos los campos para ingresar a tu cuenta."
         }
     }
 }

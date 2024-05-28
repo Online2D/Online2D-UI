@@ -13,10 +13,10 @@
             "tos_two": "of",
             "tandc": "terms and conditions",
             "create_button": "Create account",
-            "empty_field": "you must complete all the fields and accept the terms and conditions to create an account.",
-            "password_not_match": "passwords must match.",
-            "invalid_email": "invalid email address, try with a different one.",
-            "tos_not_accepted": "you must accept the terms and conditions to create an account."
+            "error_empty_field": "you must complete all the fields and accept the terms and conditions to create an account.",
+            "error_password_not_match": "passwords must match.",
+            "error_invalid_email": "invalid email address, try with a different one.",
+            "error_tos_not_accepted": "you must accept the terms and conditions to create an account."
         }
     },
     "frame": {
@@ -26,7 +26,8 @@
             "create_button": "Create",
             "enter_button": "Enter",
             "recover_button": "Recover",
-            "exit_button": "Exit"
+            "exit_button": "Exit",
+            "error_empty_fields": "you must complete all the fields to enter your account."
         }
     }
 }

@@ -9,7 +9,8 @@ document.on('ready',function() {
         const password = document.$('.connect-wrapper .field input[name="password"]').value;
 
         if (username.length === 0 || password.length === 0) {
-            showMsgbox('Error', 'Debes completar todos los campos para ingresar a tu cuenta.');
+            // showMsgbox('Error', 'Debes completar todos los campos para ingresar a tu cuenta.');
+            globalShowError(document, '.connect-wrapper .system', 'frame', 'connect', 'error_empty_fields');
             return;
         }
         

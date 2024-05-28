@@ -78,6 +78,13 @@ function switchLanguage(language) {
 	setDefaultLanguage(globalLang);
 	loadLanguage(globalLang);
 }
+
+function globalShowError(frame, wrapper, master, global, key) {
+	let errMsg = getTranslations(master, global, key);
+
+	frame.$(wrapper).classList.add('error');
+	frame.$(wrapper).firstElementChild.textContent = 'Error: ' + errMsg;
+}
 // TRANSLATIONS - END
 
 // MSGBOX - START
@@ -121,14 +128,6 @@ document.$('#modal_account .mini-button').on('click', function() {
 	document.$('#master_modal').classList.remove('active');
 });
 
-function createAccountError(master, global, key) {
-	document.$('#modal_account .system').classList.add('error');
-
-	let errMsg = getTranslations(master, global, key);
-
-	document.$('#modal_account .system p').textContent = 'Error: ' + errMsg;
-}
-
 document.$('#modal_account input[name="confirm_password"]').on('focus-in', function() {
 	document.$('#account_create').classList.add('marked');
 });
@@ -144,22 +143,22 @@ document.$('#account_create').on('click', function() {
 	const tos = document.$('#modal_account .special-field input[name="tos"]').checked;
 
 	if (email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
-		createAccountError('master', 'create_account', 'empty_field');
+		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_empty_field');
 		return;
 	}
 	
 	if (password !== confirmPassword) {
-		createAccountError('master', 'create_account', 'password_not_match');
+		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_password_not_match');
 		return;
 	}
 	
 	if (!parentWindow.isEmail(email)) {
-		createAccountError('master', 'create_account', 'invalid_email');
+		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_invalid_email');
 		return;
 	}
 
 	if (tos.checked === false) {
-		createAccountError('master', 'create_account', 'tos_not_accepted');
+		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_tos_not_accepted');
 		return;
 	}
 
@@ -254,6 +253,7 @@ frameElement.on("document-created", function(event) {
     const newDocument = event.target;
 
 	newDocument.globalThis.switchLanguage = switchLanguage;
+	newDocument.globalThis.globalShowError = globalShowError;
 
     newDocument.globalThis.showMsgbox = showMsgbox;
     newDocument.globalThis.closeMsgbox = closeMsgbox;
