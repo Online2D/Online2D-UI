@@ -12,31 +12,34 @@
             <div class="clr"></div>
 
             <div class="wrapper">
-                <img class="logo" src="../assets/images/ui/logo.png">
+                <div class="centered">
+                    <h1 data-dictionary="master.global.name"></h1>
 
-                <div class="connect-wrapper small-border">
-                    <div class="field">
-                        <span class="title">Usuario / Email</span>
-                        <input class="center-input" type="text" name="account" autofocus>
+                    <div class="connect-wrapper small-border">
+                        <div class="field">
+                            <span data-dictionary="frame.connect.email" class="title"></span>
+                            <input class="center-input" type="text" name="account" autofocus>
+                        </div>
+
+                        <div class="field">
+                            <span data-dictionary="frame.connect.password" class="title"></span>
+                            <input class="center-input" type="password" name="password">
+                        </div>
                     </div>
 
-                    <div class="field">
-                        <span class="title">Contraseña</span>
-                        <input class="center-input" type="password" name="password">
+                    <div class="button-wrapper">
+                        <button data-dictionary="frame.connect.create_button" id="create_account" class="button"></button>
+                        <button data-dictionary="frame.connect.enter_button" id="login" class="button"></button>
+                        <a data-dictionary="frame.connect.recover_button" class="button" href="#" target="@system"></a>
+                        <button data-dictionary="frame.connect.exit_button" id="exit" class="button"></button>
                     </div>
-                </div>
-
-                <div class="button-wrapper">
-                    <button id="create_account" class="button">Crear</button>
-                    <button id="login" class="button">Entrar</button>
-                    <a class="button" href="#" target="@system">Recuperar</a>
-                    <button id="exit" class="button">Salir</button>
                 </div>
                 
-                <a class="website" href="#" target="@system" tabindex="-1">www.thefutureishere.com</a>
+                <a data-dictionary="master.global.website" class="website" href="#" target="@system" tabindex="-1"></a>
             </div>
         </div>
         
         <script src="../js/connect.js"></script>
+
     </body>    
 </html>

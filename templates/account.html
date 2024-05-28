@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../assets/css/account.css">
+    </head>
+    <body>
+        <div class="window big-border">
+            <div class="tb"></div>
+            <div class="lr"></div>
+            <div class="ctb"></div>
+            <div class="clr"></div>
+
+            <div class="wrapper">
+                <img class="logo" src="../assets/images/ui/logo.png">
+
+                <div class="character-list">
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_1" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_1" class="name">Test</span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_2" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_2" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_3" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_3" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_4" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_4" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_5" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_5" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_6" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_6" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_7" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_7" class="name"></span>
+                    </div>
+
+                    <div class="box">
+                        <div class="char">
+                            <div id="char_canvas_8" class="render active" tabindex="-1" onRender="vb_CharacterRender"></div>
+                        </div>
+                        
+                        <span id="char_name_8" class="name"></span>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <button id="create_character" class="button">Crear</button>
+                    <button id="delete_character" class="button">Borrar</button>
+                    <button id="login_character" class="button">Entrar al personaje</button>
+                    <button id="change_password" class="button">Cambiar contraseña</button>
+                    <button id="exit" class="button">Salir</button>
+                </div>
+
+                <a class="website" href="#" target="@system" tabindex="-1">www.argentum.com</a>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="change-pw small-border">
+                <div class="wrapper">
+                    <div class="header">
+                        <span class="title">Cambiar contraseña</span>
+            
+                        <button id="change_password_x" class="mini-button" tabindex="-1">x</button>
+                    </div>
+            
+                    <div class="field">
+                        <span class="title">Contraseña anterior:</span>
+                        <input class="center-input" type="password" name="old_password">
+                    </div>
+            
+                    <div class="field">
+                        <span class="title">Nueva contraseña:</span>
+                        <input class="center-input" type="password" name="new_password">
+                    </div>
+            
+                    <div class="field">
+                        <span class="title">Repetir nueva contraseña:</span>
+                        <input class="center-input" type="password" name="confirm_password">
+                    </div>
+            
+                    <div class="button-wrapper">
+                        <button id="change_password_cancel" class="button">Cancelar</button>
+                        <button id="change_password_confirm" class="button">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="del-char small-border">
+                <div class="wrapper">
+                    <div class="header">
+                        <span class="title">Borrar personaje</span>
+            
+                        <button id="delete_char_x" class="mini-button" tabindex="-1">x</button>
+                    </div>
+            
+                    <p>Escribí tu token para borrar tu personaje:</p>
+            
+                    <input class="center-input" type="password" password-char="#" name="token">
+            
+                    <div class="button-wrapper">
+                        <button id="delete_char_cancel" class="button">Cancelar</button>
+                        <button id="delete_character_confirm" class="button">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/account.js"></script>
+    </body>    
+</html>

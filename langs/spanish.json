@@ -1,0 +1,32 @@
+{
+    "master": {
+        "global": {
+            "name": "Argentum",
+            "website": "www.argentum.com"
+        },
+        "create_account": {
+            "title": "Crear nueva cuenta",
+            "email": "Email:",
+            "password": "Contraseña:",
+            "repeat_password": "Repetir contraseña:",
+            "tos_one": "Acepto los",
+            "tos_two": "de",
+            "tandc": "términos y condiciones",
+            "create_button": "Crear cuenta",
+            "empty_field": "debes completar todos los campos y aceptar los términos y condiciones para crear una cuenta.",
+            "password_not_match": "las contraseñas deben coincidir.",
+            "invalid_email": "dirección de email inválida, prueba con otra.",
+            "tos_not_accepted": "debes aceptar los términos y condiciones para crear una cuenta."
+        }
+    },
+    "frame": {
+        "connect": {
+            "email": "Email",
+            "password": "Contraseña",
+            "create_button": "Crear",
+            "enter_button": "Entrar",
+            "recover_button": "Recuperar",
+            "exit_button": "Salir"
+        }
+    }
+}

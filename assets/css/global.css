@@ -60,11 +60,11 @@ body input {
 
 body input:focus {
 	border-color: var(--outline) !important;
-    outline: 5dip glow var(--outline) -1dip !important;
+    outline: 5dip glow var(--outline);
 }
 
 body input:not(:focus) {
-	text-selection: var(--text) !important none !important;
+	text-selection: var(--white) !important;
 }
 
 .center-input:empty:not(:focus)::before {
@@ -84,7 +84,7 @@ body input:not(:focus) {
 	display: inline-block;
 	width: 0.1ch;
 	height: *;
-	padding-top: 4px;
+	padding: 0px !important;
 	vertical-align: center;
 	animation: blink 0.85s steps(2) infinite;
 }
@@ -173,8 +173,8 @@ body .modal.active {
 
 body #submain {
 	behavior: frame;
-	width: var(--window-width);
-	height: var(--window-height);
+	width: 100%;
+	height: 100%;
 	display: none;
 	flow: vertical;
 	position: absolute;
@@ -193,8 +193,8 @@ body #submain.active {
 }
 
 body .main-modal {
-	width: var(--window-width);
-	height: var(--window-height);
+	width: 100%;
+	height: 100%;
 	display: block;
 	position: relative;
 	background: none !important;
@@ -203,8 +203,8 @@ body .main-modal {
 }
 
 body .over-main-modal {
-	width: var(--window-width);
-	height: var(--window-height);
+	width: 100%;
+	height: 100%;
 	display: none;
 	position: absolute;
 	top: 0;
@@ -249,7 +249,7 @@ body .over-main-modal.active {
 	position: absolute;
 	z-index: 1;
 	left: 0;
-	bottom: 0;
+	bottom: 1px;
 	transform: rotate(180deg);
 	background-image: var(--window-border);
 	background-repeat: repeat-x;
@@ -310,7 +310,7 @@ body .over-main-modal.active {
 }
 
 .big-border .clr::before, .big-border .clr::after {
-	bottom: 0px;	
+	bottom: 1px;	
 }
 
 .big-border .clr::before {
@@ -343,6 +343,30 @@ body .over-main-modal.active {
 }
 
 .button:hover {
+    color: var(--white);
+  	background: var(--mini-button-hover-bg);
+}
+
+.button.marked {
+	color: var(--white);
+	background: var(--mini-button-hover-bg);
+	box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
+}
+
+.mini-button {
+	cursor: pointer;
+	flow: vertical;
+	font-size: 1rem;
+	text-align: center;
+	color: var(--text);
+    text-shadow: 1px 1px 0px var(--black);
+	background: var(--mini-button-bg);
+	box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
+	border: 1px solid var(--mini-button-border-bg);
+    border-radius: 2px;
+}
+
+.mini-button:hover {
     color: var(--white);
   	background: var(--mini-button-hover-bg);
 }

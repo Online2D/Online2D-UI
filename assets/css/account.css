@@ -1,0 +1,306 @@
+.window {
+	background-image: var(--connect-bg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.window .wrapper .logo {
+	width: 250px;
+	height: auto;
+	display: block;
+	margin: 3rem auto 2rem auto;
+}
+
+.window .wrapper .character-list {
+	width: 400px;
+	height: auto;
+	flow: horizontal-wrap;
+    border-spacing: *;
+    margin-left: *;
+	margin-right: *;
+    margin-bottom: 2rem;
+}
+
+.window .wrapper .character-list .box {
+    cursor: pointer;
+    width: 96px;
+    height: 96px;
+    flow: vertical;
+    display: block;
+    margin-left: *;
+	margin-right: *;
+	margin-bottom: 3.5rem;
+    background: var(--black);
+}
+
+.window .wrapper .character-list .box .char {
+    width: 100%;
+    height: 100%;
+    display: block;
+    flow: vertical;
+    padding: 0 !important;
+    border: 6px solid var(--window-border-bg);
+    margin-bottom: 0.5rem;
+}
+
+.window .wrapper .character-list .box .char .render {
+    behavior: custom-widget;
+    width: 84px;
+    height: 84px;
+    display: none;
+    flow: vertical;
+    padding: 0 !important;
+    background: var(--black);
+}
+
+.window .wrapper .character-list .box .char .render:focus {
+	border-color: var(--outline) !important;
+    outline: 5dip glow var(--outline) -1dip !important;
+}
+
+.window .wrapper .character-list .box .char .render.active {
+    display: block;
+}
+
+.window .wrapper .character-list .box .name {
+    width: 100%;
+    height: auto;
+    min-height: 21px;
+    max-height: max-content;
+    display: inline-block;
+    padding: 4px 2px 2px 2px;
+    font-size: 0.8rem;
+    font-weight: var(--regular);
+    text-align: center;
+    color: var(--text);
+    background: var(--black);
+    border-radius: 3px;
+    margin-left: *;
+    margin-right: *;
+}
+
+.window .wrapper .button-wrapper {
+	width: 50%;
+    min-width: 700px;
+	height: auto;
+	flow: horizontal;
+	border-spacing: *;
+	margin-left: *;
+    margin-right: *;
+}
+
+.window .wrapper .button-wrapper .button {
+	width: 100px;
+	height: auto;
+    min-height: 62px;
+	padding: * 0px;
+    display: block;
+	flow: vertical;
+    padding-top: *;
+    padding-bottom: *;
+}
+
+.window .wrapper .website {
+	font-family: var(--font-title);
+	position: absolute;
+	bottom: 24px;
+	left: 50%;
+	right: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	color: var(--text-c);
+	text-shadow: 1px 1px 0px var(--black);
+    margin-left: *;
+	margin-right: *;
+}
+
+.change-pw {
+    width: 400px;
+    height: 300px;
+    flow: vertical;
+    display: none;
+    padding: 6px;
+	background: var(--window-bg);
+    border: 2px solid var(--window-border-bg);
+	box-shadow: 0px 0px 10px 5px var(--black), inset 0px 0px 10px 1px var(--window-border-shadow);
+    margin: *;
+}
+
+.change-pw.active {
+    display: block;
+}
+
+.change-pw .wrapper {
+    width: *;
+    height: *;
+    flow: vertical;
+    display: block;
+}
+
+.change-pw .wrapper .header {
+    width: *;
+    height: auto;
+    min-height: 30px;
+    flow: horizontal;
+    margin-bottom: 1rem;
+}
+
+.change-pw .wrapper .header .title {
+    flow: vertical;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 0px var(--black);
+    color: var(--title-text);
+    padding-top: *;
+    padding-bottom: *;
+}
+
+.change-pw .wrapper .header .mini-button {
+    width: 25px;
+    height: 25px;
+    display: block;
+    flow: vertical;
+    font-size: 0.9rem;
+    padding-top: *;
+    padding-bottom: *;
+    margin-left: *;
+    margin-top: *;
+    margin-bottom: *;
+}
+
+.change-pw .wrapper .field {
+    width: 70%;
+    display: block;
+    flow: vertical;
+    margin-left: *;
+    margin-right: *;
+    margin-bottom: 1rem;
+}
+
+.change-pw .wrapper .field:nth-child(4) {
+    margin-bottom: 1rem;
+}
+
+.change-pw .wrapper .title {
+    font-size: 0.8rem;
+    color: var(--text);
+    text-shadow: 1px 1px 0px var(--black);
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+.change-pw .wrapper input {
+    width: *;
+    padding: 0;
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.change-pw .button-wrapper {
+    width: 70%;
+    flow: horizontal;
+    margin-left: *;
+    margin-right: *;
+}
+
+.change-pw .button-wrapper .button {
+    width: 100px;
+    height: 40px;
+    min-height: auto !important;
+    flow: vertical;
+    display: block;
+    padding: 5px 0px !important;
+    margin-right: *;
+    margin-left: *;
+}
+
+.del-char {
+    width: 400px;
+    height: 200px;
+    flow: vertical;
+    display: none;
+    padding: 6px;
+	background: var(--window-bg);
+    border: 2px solid var(--window-border-bg);
+	box-shadow: 0px 0px 10px 5px var(--black), inset 0px 0px 10px 1px var(--window-border-shadow);
+    margin: *;
+}
+
+.del-char.active {
+    display: block;
+}
+
+.del-char .wrapper {
+    width: *;
+    height: *;
+    flow: vertical;
+    display: block;
+}
+
+.del-char .wrapper .header {
+    width: *;
+    height: auto;
+    min-height: 30px;
+    flow: horizontal;
+    margin-bottom: 1rem;
+}
+
+.del-char .wrapper .header .title {
+    flow: vertical;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 0px var(--black);
+    color: var(--title-text);
+    padding-top: *;
+    padding-bottom: *;
+}
+
+.del-char .wrapper .header .mini-button {
+    width: 25px;
+    height: 25px;
+    display: block;
+    flow: vertical;
+    font-size: 0.9rem;
+    padding-top: *;
+    padding-bottom: *;
+    margin-left: *;
+    margin-top: *;
+    margin-bottom: *;
+}
+
+.del-char .wrapper p {
+    font-size: 0.8rem;
+    font-weight: var(--regular);
+    text-align: center;
+    color: var(--text);
+    text-shadow: 1px 1px 0px var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.del-char .wrapper input {
+    width: 70%;
+    padding: 0;
+    text-align: center !important;
+    margin-left: *;
+    margin-right: *;
+    margin-bottom: 1rem;
+}
+
+.del-char .button-wrapper {
+    width: 70%;
+    flow: horizontal;
+    margin-left: *;
+    margin-right: *;
+}
+
+.del-char .button-wrapper .button {
+    width: 100px;
+    height: 40px;
+    min-height: auto !important;
+    flow: vertical;
+    display: block;
+    padding: 5px 5px !important;
+    margin-right: *;
+    margin-left: *;
+}

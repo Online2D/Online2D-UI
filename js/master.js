@@ -1,28 +1,171 @@
 let frameElement = document.$('#main');
 let subFrameElement;
+let globalLang = 'english';
+let globalTranslation;
+
+// Sets the default language
+document.on("ready", function() {
+	setDefaultLanguage(globalLang);
+	loadLanguage(globalLang);
+});
 
 // Load the sub-frame into the variable after the first frame finished to load
 frameElement.on('complete', function() {
 	subFrameElement = frameElement.frame.document.globalThis.document.$('#submain');
 });
 
+// TRANSLATIONS - START
+function loadJSON(filePath, callback) {
+	fetch(filePath)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok ' + response.statusText);
+			}
+			return response.json();
+		})
+		.then(data => callback(data))
+		.catch(error => console.error('There was a problem with the fetch operation:', error));
+}
+
+function getNestedValue(obj, path) {
+    return path.split('.').reduce((o, p) => o ? o[p] : null, obj);
+}
+
+function applyTranslations(translations) {
+	globalTranslation = translations;
+	let elements = document.querySelectorAll("[data-dictionary]");
+	let frameElements = frameElement.frame.document.querySelectorAll("[data-dictionary]");
+
+	elements.forEach(function(element) {
+		let translationKey = element.getAttribute("data-dictionary");
+		let translation = getNestedValue(translations, translationKey);
+		
+		if (translation) {
+			element.textContent = translation;
+		}
+	});
+
+	frameElements.forEach(function(frameElement) {
+		let translationKey = frameElement.getAttribute("data-dictionary");
+		let translation = getNestedValue(translations, translationKey);
+		
+		if (translation) {
+			frameElement.textContent = translation;
+		}
+	});
+}
+
+function getTranslations(masterKey, globalKey, translationKey) {
+	return globalTranslation[masterKey][globalKey][translationKey];
+}
+
+function loadLanguage(language) {
+	let filePath = "langs/" + language + ".json";
+
+	loadJSON(filePath, function(translations) {
+		applyTranslations(translations);
+	});
+}
+
+function setDefaultLanguage(language) {
+	let defaultLanguage = language; // Set your default language here
+	return defaultLanguage;
+}
+
+function switchLanguage(language) {
+	globalLang = language;
+
+	setDefaultLanguage(globalLang);
+	loadLanguage(globalLang);
+}
+// TRANSLATIONS - END
+
+// MSGBOX - START
 function showMsgbox(title, message) {
-    let modalTitle = document.$('#msgbox_modal').firstElementChild.firstElementChild.firstElementChild.firstElementChild;
-    let modalDescription = document.$('#msgbox_modal').firstElementChild.firstElementChild.firstElementChild.nextElementSibling;
+    let modalTitle = document.$('#msgbox_modal').firstElementChild.firstElementChild.firstElementChild;
+    let modalDescription = document.$('#msgbox_modal').firstElementChild.firstElementChild.nextElementSibling;
 
     modalTitle.innerText = title;
     modalDescription.innerText = message;
 	
 	Window.this.document.globalThis.DISABLE_AURORA = true; // HACK
 	
-    document.$('#msgbox_modal').classList.add('active');
+	document.$('#msgbox_modal').classList.add('active');
+    document.$('#master_modal').classList.add('active');
 }
 
 function closeMsgbox() {
-    document.$('#msgbox_modal').classList.remove('active');
+	document.$('#msgbox_modal').classList.remove('active');
+    document.$('#master_modal').classList.remove('active');
 	
 	Window.this.document.globalThis.DISABLE_AURORA = false; // HACK
 }
+// MSGBOX - END
+
+// CREATE ACCOUNT - START
+function showCreateAccount() {
+	document.$('#modal_account').classList.add('active');
+	document.$('#master_modal').classList.add('active');
+}
+
+document.$('#modal_account .mini-button').on('click', function() {
+	document.$('#modal_account input[name="email"]').value = '';
+	document.$('#modal_account input[name="password"]').value = '';
+	document.$('#modal_account input[name="confirm_password"]').value = '';
+	document.$('#modal_account input[name="tos"]').checked = false;
+
+	document.$('#modal_account .system').classList.remove('error');
+	document.$('#modal_account .system p').textContent = '';
+
+	document.$('#modal_account').classList.remove('active');
+	document.$('#master_modal').classList.remove('active');
+});
+
+function createAccountError(master, global, key) {
+	document.$('#modal_account .system').classList.add('error');
+
+	let errMsg = getTranslations(master, global, key);
+
+	document.$('#modal_account .system p').textContent = 'Error: ' + errMsg;
+}
+
+document.$('#modal_account .field input[name="confirm_password"]').on('focus-in', function() {
+	document.$('#account_create').classList.add('marked');
+});
+
+document.$('#modal_account .field input[name="confirm_password"]').on('focus-out', function() {
+	document.$('#account_create').classList.remove('marked');
+});
+
+document.$('#account_create').on('click', function() {
+	const email = document.$('#modal_account .field input[name="email"]').value;
+	const password = document.$('#modal_account .field input[name="password"]').value;
+	const confirmPassword = document.$('#modal_account .field input[name="confirm_password"]').value;
+	const tos = document.$('#modal_account .special-field input[name="tos"]').checked;
+
+	if (email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
+		createAccountError('master', 'create_account', 'empty_field');
+		return;
+	}
+	
+	if (password !== confirmPassword) {
+		createAccountError('master', 'create_account', 'password_not_match');
+		return;
+	}
+	
+	if (!parentWindow.isEmail(email)) {
+		createAccountError('master', 'create_account', 'invalid_email');
+		return;
+	}
+
+	if (tos.checked === false) {
+		createAccountError('master', 'create_account', 'tos_not_accepted');
+		return;
+	}
+
+	Window.this.xcall('vb_AccountCreate', username, email, password, token);
+});
+// CREATE ACCOUNT - END
 
 // Close the sub-frame globally
 function closeSubmainBox() {
@@ -110,8 +253,11 @@ frameElement.on("document-created", function(event) {
     // Binds functions to the frame
     const newDocument = event.target;
 
+	newDocument.globalThis.switchLanguage = switchLanguage;
+
     newDocument.globalThis.showMsgbox = showMsgbox;
     newDocument.globalThis.closeMsgbox = closeMsgbox;
+	newDocument.globalThis.showCreateAccount = showCreateAccount;
 	newDocument.globalThis.closeSubmainBox = closeSubmainBox;
     newDocument.globalThis.changeView = changeView;
     newDocument.globalThis.isEmail = isEmail;

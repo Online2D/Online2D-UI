@@ -8,8 +8,8 @@
     <body>
         <div id="main" tabindex="-1" src="templates/connect.html" content-style="assets/css/global.css"></div>
 
-        <div id="msgbox_modal" class="index-modal" tabindex="-1">
-            <div class="msgbox small-border">
+        <div id="master_modal" class="index-modal active" tabindex="-1">
+            <div id="msgbox_modal" class="msgbox small-border">
                 <div class="wrapper">
                     <div class="header">
                         <span class="title"></span>
@@ -18,6 +18,47 @@
                     </div>
 
                     <p></p>
+                </div>
+            </div>
+
+            <div id="modal_account" class="create-account active">
+                <div class="wrapper">
+                    <div class="header">
+                        <span data-dictionary="master.create_account.title" class="title"></span>
+
+                        <button class="mini-button" tabindex="-1">x</button>
+                    </div>
+
+                    <div class="field">
+                        <span data-dictionary="master.create_account.email" class="title"></span>
+                        <input class="center-input" type="text" name="email">
+                    </div>
+
+                    <div class="field">
+                        <span data-dictionary="master.create_account.password" class="title"></span>
+                        <input class="center-input" type="password" name="password">
+                    </div>
+
+                    <div class="field">
+                        <span data-dictionary="master.create_account.repeat_password" class="title"></span>
+                        <input class="center-input" type="password" name="confirm_password">
+                    </div>
+
+                    <div class="special-field">
+                        <input id="tos" class="center-input" type="checkbox" name="tos">
+                        <label for="tos">
+                            <span data-dictionary="master.create_account.tos_one"></span>
+                            <a data-dictionary="master.create_account.tandc" href='' target='_blank'></a>
+                            <span data-dictionary="master.create_account.tos_two"></span>
+                            <span data-dictionary="master.global.name"></span>
+                        </label>
+                    </div>
+
+                    <div class="system">
+                        <p></p>
+                    </div>
+
+                    <button data-dictionary="master.create_account.create_button" id="account_create" class="button"></button>
                 </div>
             </div>
         </div>

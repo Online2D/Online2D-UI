@@ -1,17 +1,27 @@
 .window {
-	background-image: url('../images/backgrounds/connect.jpg');
+	background-image: var(--connect-bg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
-.window .wrapper .logo {
-	width: 250px;
-	height: auto;
-	display: block;
-	margin: 1rem auto;
+.window .wrapper .centered {
+	flow: vertical;
+	margin: * auto;
 }
 
-.window .wrapper .connect-wrapper {
+.window .wrapper .centered h1 {
+	width: auto;
+	height: auto;
+	display: block;
+	font-size: 4rem;
+	font-weight: var(--bold);
+	color: var(--title-text);
+	text-align: center;
+	text-shadow: 1px 1px 0px var(--black);
+	margin-bottom: 2rem;
+}
+
+.window .wrapper .centered .connect-wrapper {
 	width: 20%;
 	min-width: 230px;
 	height: auto;
@@ -19,20 +29,20 @@
 	flow: vertical;
 	background: var(--window-bg);
 	background-repeat: repeat;
-	margin: 0px auto 1rem auto;
+	margin: 0px auto 2rem auto;
 }
 
-.window .wrapper .connect-wrapper .field {
+.window .wrapper .centered .connect-wrapper .field {
 	width: *;
 	flow: vertical;
 	margin-bottom: 1.5rem;
 }
 
-.window .wrapper .connect-wrapper .field:last-child {
+.window .wrapper .centered .connect-wrapper .field:last-child {
 	margin-bottom: 0px;
 }
 
-.window .wrapper .connect-wrapper .field .title {
+.window .wrapper .centered .connect-wrapper .field .title {
 	width: *;
 	font-family: var(--font);
 	font-size: 1rem;
@@ -43,7 +53,7 @@
 	margin-bottom: 0.3rem;
 }
 
-.window .wrapper .connect-wrapper .field input {
+.window .wrapper .centered .connect-wrapper .field input {
 	width: 90%;
 	padding: 0;
 	font-size: 1rem;
@@ -55,7 +65,7 @@
 	margin: 0px *;
 }
 
-.window .wrapper .button-wrapper {
+.window .wrapper .centered .button-wrapper {
 	width: 230px;
 	height: auto;
 	flow: horizontal-wrap;
@@ -64,7 +74,7 @@
 	margin-right: auto;
 }
 
-.window .wrapper .button-wrapper .button {
+.window .wrapper .centered .button-wrapper .button {
 	width: 100px;
 	height: 40px;
 	padding: * 0px;
@@ -83,7 +93,7 @@
 	right: 50%;
 	transform: translateX(-50%);
 	text-align: center;
-	color: var(--text-c);
+	color: var(--text-l);
 	text-shadow: 1px 1px 0px var(--black);
 	margin-left: *;
 	margin-right: *;
