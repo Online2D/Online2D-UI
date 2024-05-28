@@ -1,7 +1,7 @@
 let frameElement = document.$('#main');
 let subFrameElement;
 let globalLang = 'english';
-let globalTranslation;
+let globalTranslation; // holds the JSON file with the translation
 
 // Sets the default language
 document.on("ready", function() {
@@ -31,14 +31,13 @@ function getNestedValue(obj, path) {
     return path.split('.').reduce((o, p) => o ? o[p] : null, obj);
 }
 
-function applyTranslations(translations) {
-	globalTranslation = translations;
+function applyTranslations() {
 	let elements = document.querySelectorAll("[data-dictionary]");
 	let frameElements = frameElement.frame.document.querySelectorAll("[data-dictionary]");
 
 	elements.forEach(function(element) {
 		let translationKey = element.getAttribute("data-dictionary");
-		let translation = getNestedValue(translations, translationKey);
+		let translation = getNestedValue(globalTranslation, translationKey);
 		
 		if (translation) {
 			element.textContent = translation;
@@ -47,7 +46,7 @@ function applyTranslations(translations) {
 
 	frameElements.forEach(function(frameElement) {
 		let translationKey = frameElement.getAttribute("data-dictionary");
-		let translation = getNestedValue(translations, translationKey);
+		let translation = getNestedValue(globalTranslation, translationKey);
 		
 		if (translation) {
 			frameElement.textContent = translation;
@@ -63,12 +62,13 @@ function loadLanguage(language) {
 	let filePath = "langs/" + language + ".json";
 
 	loadJSON(filePath, function(translations) {
-		applyTranslations(translations);
+		globalTranslation = translations;
+		applyTranslations();
 	});
 }
 
 function setDefaultLanguage(language) {
-	let defaultLanguage = language; // Set your default language here
+	let defaultLanguage = language;
 	return defaultLanguage;
 }
 
@@ -129,11 +129,11 @@ function createAccountError(master, global, key) {
 	document.$('#modal_account .system p').textContent = 'Error: ' + errMsg;
 }
 
-document.$('#modal_account .field input[name="confirm_password"]').on('focus-in', function() {
+document.$('#modal_account input[name="confirm_password"]').on('focus-in', function() {
 	document.$('#account_create').classList.add('marked');
 });
 
-document.$('#modal_account .field input[name="confirm_password"]').on('focus-out', function() {
+document.$('#modal_account input[name="confirm_password"]').on('focus-out', function() {
 	document.$('#account_create').classList.remove('marked');
 });
 
