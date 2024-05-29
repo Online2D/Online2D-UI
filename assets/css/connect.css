@@ -4,6 +4,23 @@
 	background-size: cover;
 }
 
+.window .wrapper #account_settings {
+    width: auto;
+    height: 35px;
+    padding: * 1rem;
+    display: block;
+    flow: vertical;
+    position: absolute;
+    z-index: 4;
+    top: 20px;
+    right: 20px;
+	text-align: center;
+	background-image: var(--settings-bg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+}
+
 .window .wrapper .centered {
 	flow: vertical;
 	margin: * auto;
@@ -23,7 +40,7 @@
 
 .window .wrapper .centered .connect-wrapper {
 	width: 20%;
-	min-width: 230px;
+	min-width: 300px;
 	height: auto;
 	padding: 1rem 1rem 1.5rem 1rem;
 	flow: vertical;
@@ -87,20 +104,6 @@
 	margin-left: *;
 	margin-right: *;
 	margin-bottom: 10px;
-}
-
-.window .wrapper .website {
-	font-family: var(--font);
-	position: absolute;
-	bottom: 24px;
-	left: 50%;
-	right: 50%;
-	transform: translateX(-50%);
-	text-align: center;
-	color: var(--text-l);
-	text-shadow: 1px 1px 0px var(--black);
-	margin-left: *;
-	margin-right: *;
 }
 
 .create-account {

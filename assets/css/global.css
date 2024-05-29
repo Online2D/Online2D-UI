@@ -60,11 +60,11 @@ body input {
 
 body input:focus {
 	border-color: var(--outline) !important;
-    outline: 5dip glow var(--outline);
+    outline: 5dip glow var(--outline) -1dip !important;
 }
 
 body input:not(:focus) {
-	text-selection: var(--white) !important;
+	text-selection: var(--text) !important none !important;
 }
 
 .center-input:empty:not(:focus)::before {
@@ -133,6 +133,19 @@ body button {
 body button:focus {
 	border-color: var(--outline) !important;
     outline: 5dip glow var(--outline) -1dip !important;
+}
+
+body #render {
+	width: *;
+	height: *;
+	flow: vertical;
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+	margin: 0 !important;
+	background-image: var(--connect-bg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 body .window {
@@ -441,7 +454,6 @@ body .over-main-modal.active {
 	}
 
 	:root:hover::marker {
-		/* border: 1px solid var(--mini-button-border-bg); */
 		box-shadow: 0px 0px 5px 1px var(--mini-button-border-bg);
 	}
 
@@ -486,23 +498,22 @@ body .over-main-modal.active {
 		font-size: 0.6rem;
 		text-align: center;
 		color: var(--text);
-		background: var(--button);
-		box-shadow: inset 0px 0px 3px 1px var(--border);
-		border: 2px solid var(--border);
+		background: var(--mini-button-bg);
+		box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
+		border: 1px solid var(--mini-button-border-bg);
 		foreground-image: url('../images/ui/window/scroll-b-prev.png'); 
 		foreground-position: 50% 50%;
 		foreground-repeat: no-repeat;
 	}
 	
 	.prev:hover {
-		background: var(--button-h);
+		background: var(--mini-button-hover-bg);
 		foreground-image: url('../images/ui/window/scroll-b-prev-h.png'); 
 	}
 	
 	.prev:active {
-		background: var(--button-a);
-		box-shadow: inset 0px 0px 3px 1px var(--border-a);
-		border: 2px solid var(--border-a);
+		background: var(--mini-button-hover-bg);
+		border: 1px solid var(--character-hover-border-bg);
 	}
 	
 	.next {
@@ -511,43 +522,43 @@ body .over-main-modal.active {
 		font-size: 0.6rem;
 		text-align: center;
 		color: var(--text);
-		background: var(--button);
-		box-shadow: inset 0px 0px 3px 1px var(--border);
-		border: 2px solid var(--border);
+		background: var(--mini-button-bg);
+		box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
+		border: 1px solid var(--mini-button-border-bg);
 		foreground-image: url('../images/ui/window/scroll-b-next.png'); 
 		foreground-position: 50% 50%;
 		foreground-repeat: no-repeat;
 	}
 	
 	.next:hover {
-		background: var(--button-h);
+		background: var(--mini-button-hover-bg);
 		foreground-image: url('../images/ui/window/scroll-b-next-h.png'); 
 	}
 	
 	.next:active {
-		background: var(--button-a);
-		box-shadow: inset 0px 0px 3px 1px var(--border-a);
-		border: 2px solid var(--border-a);
+		background: var(--mini-button-hover-bg);
+		border: 1px solid var(--character-hover-border-bg);
 	}
 	
 	.base, .next-page, .prev-page {
-		background: var(--button);
-		box-shadow: inset 0px 0px 5px 2px var(--border);
+		background: var(--window-border-shadow);
+		border: 1px solid var(--window-border-bg);
+		box-shadow: inset 0px 0px 8px 2px var(--window-border-shadow);
 	}
 
 	.slider {
-		background: var(--button-h);
-		box-shadow: inset 0px 0px 3px 2px var(--border);
+		background: var(--character-bg);
+		box-shadow: inset 0px 0px 8px 2px var(--window-border-bg);
 	}
 
 	.slider:hover {
-		background: var(--button-h);
-		box-shadow: inset 0px 0px 3px 2px var(--border);
+		background: var(--character-hover-bg);
+		box-shadow: inset 0px 0px 8px 2px var(--window-border-bg);
 	}
 
 	.slider:active {
-		background: var(--button-a);
-		box-shadow: inset 0px 0px 3px 2px var(--button-shadow-a);
+		background: var(--character-hover-bg);
+		box-shadow: inset 0px 0px 8px 2px var(--window-border-bg);
 	}
 	
 	.next:disabled, .slider:disabled, .prev:disabled {

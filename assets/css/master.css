@@ -30,6 +30,7 @@
 	--white: #fff;
 	--red: #410909;
 	--red-l: #b86464;
+	--red-d: #240505;
 
     --title-text: #a78668;
 	--title-text-h: #c09f81;
@@ -52,9 +53,24 @@
 
     --input-border: #382c28;
 
+	--character-bg: #3d332d;
+	--character-border-bg: #61534f;
+	--character-shadow-bg: #231b19;
+
+	--character-hover-bg: #4b3f38;
+	--character-hover-border-bg: #6e5f5b;
+	--character-hover-shadow-bg: #312624;
+
+	--character-selected-bg: #4b3f38;
+	--character-selected-border-bg: #6e5f5b;
+	--character-selected-shadow-bg: #c09f81;
+
+	--character-city: #af6320;
+
 	--window-border: url("../images/ui/window/wb.png");
 	--window-corner: url("../images/ui/window/wc.png");
 	--connect-bg: url('../images/backgrounds/connect.jpg');
+	--settings-bg: url('../images/ui/window/cog.png');
     
 	font-family: var(--font);
 	font-size: 16px;

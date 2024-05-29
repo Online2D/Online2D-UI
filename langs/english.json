@@ -4,8 +4,26 @@
             "name": "Argentum",
             "website": "www.argentum.com"
         },
+        "classes": {
+            "warrior": "Warrior"
+        },
+        "cities": {
+            "ullathorpe": "Ullathorpe"
+        }
+    },
+    "frame": {
+        "connect": {
+            "username": "Username",
+            "password": "Password",
+            "create_button": "Create",
+            "enter_button": "Enter",
+            "recover_button": "Recover",
+            "exit_button": "Exit",
+            "error_empty_fields": "you must complete all the fields to enter your account."
+        },
         "create_account": {
             "title": "Create new account",
+            "username": "Username:",
             "email": "Email:",
             "password": "Password:",
             "repeat_password": "Repeat password:",
@@ -17,17 +35,13 @@
             "error_password_not_match": "passwords must match.",
             "error_invalid_email": "invalid email address, try with a different one.",
             "error_tos_not_accepted": "you must accept the terms and conditions to create an account."
-        }
-    },
-    "frame": {
-        "connect": {
-            "email": "Email",
-            "password": "Password",
-            "create_button": "Create",
-            "enter_button": "Enter",
-            "recover_button": "Recover",
-            "exit_button": "Exit",
-            "error_empty_fields": "you must complete all the fields to enter your account."
+        },
+        "account": {
+            "character_list": "Characters list",
+            "level": "Level",
+            "create_new_character_button": "Create new character",
+            "delete_character_button": "Delete character",
+            "logout_button": "Log out"
         }
     }
 }
