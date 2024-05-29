@@ -109,63 +109,6 @@ function closeMsgbox() {
 }
 // MSGBOX - END
 
-// CREATE ACCOUNT - START
-function showCreateAccount() {
-	document.$('#modal_account').classList.add('active');
-	document.$('#master_modal').classList.add('active');
-}
-
-document.$('#modal_account .mini-button').on('click', function() {
-	document.$('#modal_account input[name="email"]').value = '';
-	document.$('#modal_account input[name="password"]').value = '';
-	document.$('#modal_account input[name="confirm_password"]').value = '';
-	document.$('#modal_account input[name="tos"]').checked = false;
-
-	document.$('#modal_account .system').classList.remove('error');
-	document.$('#modal_account .system p').textContent = '';
-
-	document.$('#modal_account').classList.remove('active');
-	document.$('#master_modal').classList.remove('active');
-});
-
-document.$('#modal_account input[name="confirm_password"]').on('focus-in', function() {
-	document.$('#account_create').classList.add('marked');
-});
-
-document.$('#modal_account input[name="confirm_password"]').on('focus-out', function() {
-	document.$('#account_create').classList.remove('marked');
-});
-
-document.$('#account_create').on('click', function() {
-	const email = document.$('#modal_account .field input[name="email"]').value;
-	const password = document.$('#modal_account .field input[name="password"]').value;
-	const confirmPassword = document.$('#modal_account .field input[name="confirm_password"]').value;
-	const tos = document.$('#modal_account .special-field input[name="tos"]').checked;
-
-	if (email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
-		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_empty_field');
-		return;
-	}
-	
-	if (password !== confirmPassword) {
-		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_password_not_match');
-		return;
-	}
-	
-	if (!parentWindow.isEmail(email)) {
-		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_invalid_email');
-		return;
-	}
-
-	if (tos.checked === false) {
-		globalShowError(document, '#modal_account .system', 'master', 'create_account', 'error_tos_not_accepted');
-		return;
-	}
-
-	Window.this.xcall('vb_AccountCreate', username, email, password, token);
-});
-// CREATE ACCOUNT - END
-
 // Close the sub-frame globally
 function closeSubmainBox() {
 	subFrameElement.classList.remove('active');
@@ -257,7 +200,6 @@ frameElement.on("document-created", function(event) {
 
     newDocument.globalThis.showMsgbox = showMsgbox;
     newDocument.globalThis.closeMsgbox = closeMsgbox;
-	newDocument.globalThis.showCreateAccount = showCreateAccount;
 	newDocument.globalThis.closeSubmainBox = closeSubmainBox;
     newDocument.globalThis.changeView = changeView;
     newDocument.globalThis.isEmail = isEmail;

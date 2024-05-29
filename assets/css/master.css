@@ -115,7 +115,7 @@ body #main {
 }
 
 body .index-modal {
-	width: calc(100vw - 52px);
+	width: 100vw;
 	height: 100vh;
 	display: none;
 	position: fixed;
@@ -132,9 +132,11 @@ body .index-modal.active {
 	display: block;
 }
 
-body .msgbox, body .create-account {
+body .index-modal .msgbox {
 	width: 400px;
 	height: auto;
+	min-height: 100px;
+	max-height: max-content;
 	padding: 6px;
 	display: none;
 	flow: vertical;
@@ -144,35 +146,20 @@ body .msgbox, body .create-account {
 	margin: *;
 }
 
-body .msgbox.active, body .create-account.active {
+body .index-modal .msgbox.active {
 	display: block;
 }
 
-body .msgbox .wrapper, body .create-account .wrapper {
-	width: 100%;
-	height: 100%;
-	flow: vertical;
-	position: relative;
-}
-
-.msgbox, .create-account {
-    width: 400px;
-    height: * !important;
-	min-height: 100px;
-	max-height: max-content;
-    flow: vertical;
-    display: block;
-}
-
-.msgbox .wrapper, .create-account .wrapper {
+body .index-modal .msgbox .wrapper {
     width: *;
     height: * !important;
 	max-height: max-content;
-    flow: vertical;
-    display: block;
+	flow: vertical;
+	position: relative;
+	display: block;
 }
 
-.msgbox .wrapper .header, .create-account .wrapper .header {
+body .index-modal .msgbox .wrapper .header {
     width: *;
     height: auto;
     min-height: 30px;
@@ -181,7 +168,7 @@ body .msgbox .wrapper, body .create-account .wrapper {
     margin-bottom: 1rem;
 }
 
-.msgbox .wrapper .header .title, .create-account .wrapper .header .title {
+body .index-modal .msgbox .wrapper .header .title {
 	width: 90%;
     flow: vertical;
     font-family: var(--font);
@@ -194,7 +181,7 @@ body .msgbox .wrapper, body .create-account .wrapper {
 	margin: 0px auto;
 }
 
-.msgbox .wrapper .header .mini-button, .create-account .wrapper .header .mini-button {
+body .index-modal .msgbox .wrapper .header .mini-button {
     width: 24px;
     height: 24px;
 	display: block;
@@ -204,161 +191,13 @@ body .msgbox .wrapper, body .create-account .wrapper {
 	right: 2px;
 }
 
-.msgbox .wrapper p {
+body .index-modal .msgbox .wrapper p {
     font-size: 0.9rem;
     font-weight: var(--regular);
     text-align: center;
     color: var(--text);
 	text-shadow: 1px 1px 0px var(--black);
     margin-bottom: 0.5rem;
-}
-
-body input {
-	cursor: pointer;
-	display: block;
-	font-family: var(--font);
-	padding: 0;
-	font-size: 1rem;
-	color: var(--text);
-	text-align: center !important;
-	background: var(--black);
-    border: 1px solid var(--input-border) !important;
-    box-shadow: 0px 0px 5px 1px var(--window-border-shadow);
-}
-
-body input:focus {
-	border-color: var(--outline) !important;
-    outline: 5dip glow var(--outline);
-}
-
-body input:not(:focus) {
-	text-selection: var(--white) !important;
-}
-
-.center-input:empty:not(:focus)::before {
-	word-wrap: break-word;
-}
-
-.center-input:focus::before {
-	display: none;
-}
-
-.center-input:focus:empty {
-	caret-color: transparent;
-}
-
-.center-input:focus:empty::after {
-	content: "";
-	display: inline-block;
-	width: 0.1ch;
-	height: *;
-	padding: 0px !important;
-	vertical-align: center;
-	animation: blink 0.85s steps(2) infinite;
-}
-
-.center-input:focus::after {
-	display: none;
-}
-
-@keyframes blink {
-	0% {
-		opacity: 0;
-	}
-}
-
-.create-account .field {
-	width: *;
-	flow: vertical;
-	margin-bottom: 1rem;
-}
-
-.create-account .field .title {
-	width: *;
-	font-family: var(--font-title);
-	font-size: 1rem;
-	font-weight: var(--regular);
-	text-align: center;
-	color: var(--title-text);
-	text-shadow: 1px 1px 0px var(--black);
-	margin-bottom: 0.3rem;
-}
-
-.create-account .field input {
-	width: 80%;
-	padding: 0;
-	font-size: 1rem;
-	color: var(--text);
-	text-align: center;
-	background: var(--black);
-	border: none;
-	border-radius: 3px;
-	margin: 0px auto;
-}
-
-.create-account .special-field {
-	width: 80%;
-	flow: horizontal;
-	margin: 0px auto 1rem auto;
-}
-
-.create-account .special-field input[type="checkbox"] {
-	width: 16px;
-	height: 16px;
-	style-set: special-checkbox;
-	margin-right: 10px;
-}
-
-.create-account .special-field label span {
-	cursor: pointer;
-	user-select: none;
-	font-size: 1rem;
-	font-weight: var(--regular);
-	text-align: left;
-	text-shadow: 1px 1px 0px var(--black);
-	color: var(--text);
-}
-
-.create-account .special-field label a {
-	font-size: 1rem;
-	font-weight: var(--regular);
-	text-align: left;
-	text-decoration: none;
-	color: var(--title-text);
-}
-
-.create-account .special-field label a:hover {
-	text-decoration: underline;
-	color: var(--title-text-h);
-}
-
-.create-account .button {
-	cursor: pointer;
-	width: 80%;
-	height: 40px;
-	font-size: 1.25rem;
-	padding: * 0px;
-	flow: vertical;
-    font-family: var(--font);
-	font-weight: var(--regular);
-	background: var(--mini-button-bg);
-	text-align: center;
-	color: var(--text);
-	border: 1px solid var(--mini-button-border-bg);
-	box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
-    border-radius: 2px;
-	margin: 0px auto 0.5rem auto;
-}
-
-.button.marked {
-	color: var(--white);
-	background: var(--mini-button-hover-bg);
-	box-shadow: 0px 0px 3px 1px var(--black), inset 0px 3px 0px rgba(255, 255, 255, 0.2), inset 0px 0px 0px 2px var(--black);
-}
-
-.create-account  .button:hover {
-    color: var(--white);
-  	background: var(--mini-button-hover-bg);
 }
 
 .hidden {
@@ -386,101 +225,4 @@ body input:not(:focus) {
 .mini-button:hover {
     color: var(--white);
   	background: var(--mini-button-hover-bg);
-}
-
-.system {
-	width: 80%;
-	display: none;
-	flow: horizontal-wrap;
-	border-radius: 4px;
-	box-shadow: 0px 0px 0px 1px var(--black), inset 0px 0px 10px 1px var(--black);
-	border: 1px solid var(--red);
-	margin: 0px auto 1rem auto;
-}
-
-.system p {
-	width: 100%;
-	padding: 0.4rem 0.5rem 0.5rem 0.5rem;
-	font-size: 1rem;
-	font-weight: var(--regular);
-	text-align: center;
-	text-shadow: 1px 1px 0px var(--black);
-	word-break: break-word !important;
-}
-
-.system.error {
-	display: block;
-	background: var(--red);
-}
-
-.system.error p {
-	color: var(--red-l);
-}
-
-.marked {
-	box-shadow: 0px 0px 5px 3px var(--orange-l);
-}
-
-@set special-checkbox {
-	:root{
-		cursor: pointer !important;
-		height: 18px; 
-		width: 18px;
-		vertical-align: middle;
-		background: var(--black);
-    }
-
-	:root::marker {
-		size: 14dip;
-		margin: *;
-		stroke: none;
-		stroke-width: 0;
-		background: var(--mini-button-bg);
-		background-repeat: no-repeat;
-		background-position: 50% 50%;
-		box-shadow: inset 0px 0px 3px 1px var(--mini-button-shadow);
-		border-radius: 2dip;
-	}
-
-	:root:active::marker {
-		outline: none !important;
-		size: 14dip;
-	}
-
-	:root:hover::marker {
-		/* border: 1px solid var(--mini-button-border-bg); */
-		box-shadow: 0px 0px 5px 1px var(--mini-button-border-bg);
-	}
-
-	:root:checked::marker {
-		background-image: url(path:M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z);
-		background-size: 9dip;
-		background-color: var(--mini-button-hover-bg);
-		fill: var(--text-l);
-	}
-
-	:root:disabled::marker {
-		background-size: 9dip;
-		background-color: color(widget-disabled);
-		color: color(widget-disabled-text);
-		fill: color(widget-disabled-text);
-	}
-
-	:root:tab-focus {
-		border-radius: length(border-radius);
-		outline: 2dip solid color(button-hover) 0dip;
-	}
-
-	input:root {
-	  behavior: check;
-	  cursor: default;
-	  vertical-align: middle;
-	}
-
-	:not(input):root {
-		behavior: check; 
-		cursor: pointer;
-		white-space: nowrap;
-		vertical-align: baseline;
-	}
 }
