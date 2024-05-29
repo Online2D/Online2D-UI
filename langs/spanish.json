@@ -5,10 +5,12 @@
             "website": "www.argentum.com"
         },
         "classes": {
-            "warrior": "Guerrero"
+            "warrior": "Guerrero",
+            "mage": "Mago"
         },
         "cities": {
-            "ullathorpe": "Ullathorpe"
+            "ullathorpe": "Ullathorpe",
+            "nix": "Nix"
         }
     },
     "frame": {

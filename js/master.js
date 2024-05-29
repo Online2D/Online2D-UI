@@ -2,6 +2,7 @@ let frameElement = document.$('#main');
 let subFrameElement;
 let globalLang = 'english';
 let globalTranslation; // holds the JSON file with the translation
+let translationCache = {};
 
 // Sets the default language
 document.on("ready", function() {
@@ -16,42 +17,75 @@ frameElement.on('complete', function() {
 
 // TRANSLATIONS - START
 function loadJSON(filePath, callback) {
-	fetch(filePath)
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok ' + response.statusText);
-			}
-			return response.json();
-		})
-		.then(data => callback(data))
-		.catch(error => console.error('There was a problem with the fetch operation:', error));
+    // Check if the translation is already in cache
+    if (translationCache[filePath]) {
+        callback(translationCache[filePath]);
+    } else {
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                translationCache[filePath] = data; // Cache the translation
+                callback(data);
+            })
+            .catch(error => console.error('There was a problem with the fetch operation:', error));
+    }
 }
 
 function getNestedValue(obj, path) {
-    return path.split('.').reduce((o, p) => o ? o[p] : null, obj);
+	if (translationCache[path]) {
+		return translationCache[path];
+	}
+
+	let value = path.split('.').reduce((o, p) => o ? o[p] : null, obj);
+	translationCache[path] = value;
+	return value;
 }
 
 function applyTranslations() {
-	let elements = document.querySelectorAll("[data-dictionary]");
-	let frameElements = frameElement.frame.document.querySelectorAll("[data-dictionary]");
+    let elements = document.querySelectorAll("[data-dictionary]");
+    let frameElements = frameElement.frame.document.querySelectorAll("[data-dictionary]");
 
-	elements.forEach(function(element) {
-		let translationKey = element.getAttribute("data-dictionary");
-		let translation = getNestedValue(globalTranslation, translationKey);
-		
-		if (translation) {
-			element.textContent = translation;
-		}
-	});
+    let allElements = elements;
+    if (frameElements) {
+        allElements = Array.from(elements).concat(Array.from(frameElements));
+    }
 
-	frameElements.forEach(function(frameElement) {
-		let translationKey = frameElement.getAttribute("data-dictionary");
-		let translation = getNestedValue(globalTranslation, translationKey);
-		
-		if (translation) {
-			frameElement.textContent = translation;
-		}
-	});
+    let updates = [];
+
+    allElements.forEach(function(element) {
+        let translationKey = element.getAttribute("data-dictionary");
+        let translation = getNestedValue(globalTranslation, translationKey);
+
+        if (translation && element.textContent !== translation) {
+            updates.push({ element, translation });
+        }
+    });
+
+    // Process updates in batches
+    function processBatch(updates, batchSize) {
+        if (updates.length === 0) {
+            return;
+        }
+
+        let batch = updates.splice(0, batchSize);
+
+		Promise.resolve().then(() => {
+            batch.forEach(function(update) {
+                update.element.textContent = update.translation;
+            });
+
+            // Schedule the next batch
+            requestAnimationFrame(() => processBatch(updates, batchSize));
+        });
+    }
+
+    // Start processing updates with a batch size of 50
+    processBatch(updates, 1);
 }
 
 function getTranslations(masterKey, globalKey, translationKey) {
@@ -68,8 +102,7 @@ function loadLanguage(language) {
 }
 
 function setDefaultLanguage(language) {
-	let defaultLanguage = language;
-	return defaultLanguage;
+	globalLang = language;
 }
 
 function switchLanguage(language) {
@@ -85,6 +118,17 @@ function globalShowError(frame, wrapper, master, global, key) {
 	frame.$(wrapper).classList.add('error');
 	frame.$(wrapper).firstElementChild.textContent = 'Error: ' + errMsg;
 }
+
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(func, wait);
+    };
+}
+
+// Using debouncing to prevent excessive calls to applyTranslations
+window.addEventListener('resize', debounce(applyTranslations, 100));
 // TRANSLATIONS - END
 
 // MSGBOX - START
