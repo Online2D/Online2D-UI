@@ -47,44 +47,61 @@ function getNestedValue(obj, path) {
 }
 
 function applyTranslations() {
-    let elements = document.querySelectorAll("[data-dictionary]");
-    let frameElements = frameElement.frame.document.querySelectorAll("[data-dictionary]");
+    let elements = document.querySelectorAll("*");
+    let frameElements = frameElement.frame.document.querySelectorAll("*");
 
     let allElements = elements;
     if (frameElements) {
         allElements = Array.from(elements).concat(Array.from(frameElements));
     }
 
+    let fragment = document.createDocumentFragment();
     let updates = [];
 
     allElements.forEach(function(element) {
-        let translationKey = element.getAttribute("data-dictionary");
-        let translation = getNestedValue(globalTranslation, translationKey);
-
-        if (translation && element.textContent !== translation) {
-            updates.push({ element, translation });
+        if (element.childNodes && element.childNodes.length > 0) {
+            Array.from(element.childNodes).forEach(function(child) {
+                if (child.nodeType === Node.TEXT_NODE) { // Node.TEXT_NODE
+                    let textContent = child.nodeValue;
+                    let matches = textContent.match(/{([^}]+)}/g);
+                    if (matches) {
+                        matches.forEach(function(match) {
+                            let key = match.slice(1, -1); // Remove the {}
+                            let translation = getNestedValue(globalTranslation, key);
+                            if (translation) {
+                                textContent = textContent.replace(match, translation);
+                            }
+                        });
+                        if (child.nodeValue !== textContent) {
+                            updates.push({ child, textContent });
+                        }
+                    }
+                }
+            });
         }
     });
 
-    // Process updates in batches
+    // Process updates in batches with an optimal size
     function processBatch(updates, batchSize) {
         if (updates.length === 0) {
             return;
         }
 
+        let fragment = document.createDocumentFragment();
         let batch = updates.splice(0, batchSize);
 
-		Promise.resolve().then(() => {
-            batch.forEach(function(update) {
-            	update.element.textContent = update.translation;
-            });
-
-            // Schedule the next batch
-            requestAnimationFrame(() => processBatch(updates, batchSize));
+        batch.forEach(function(update) {
+            let newNode = document.createTextNode(update.textContent);
+            update.child.parentNode.replaceChild(newNode, update.child);
         });
+
+        document.body.appendChild(fragment);
+
+        // Schedule the next batch
+        requestAnimationFrame(() => processBatch(updates, batchSize));
     }
 
-    // Start processing updates with a batch size of 50
+    // Start processing updates with a batch size of 10
     processBatch(updates, 1);
 }
 
