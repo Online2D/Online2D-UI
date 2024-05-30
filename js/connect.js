@@ -41,22 +41,22 @@ document.on('ready',function() {
         const tos = document.$('.modal .create-account .special-field input[name="tos"]').checked;
     
         if (username.length === 0 || email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'master', 'create_account', 'error_empty_field');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_empty_field');
             return;
         }
         
         if (password !== confirmPassword) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'master', 'create_account', 'error_password_not_match');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_password_not_match');
             return;
         }
         
         if (!parentWindow.isEmail(email)) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'master', 'create_account', 'error_invalid_email');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_invalid_email');
             return;
         }
     
         if (tos.checked === false) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'master', 'create_account', 'error_tos_not_accepted');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_tos_not_accepted');
             return;
         }
     

@@ -76,7 +76,7 @@ function applyTranslations() {
 
 		Promise.resolve().then(() => {
             batch.forEach(function(update) {
-                update.element.textContent = update.translation;
+            	update.element.textContent = update.translation;
             });
 
             // Schedule the next batch
@@ -112,13 +112,6 @@ function switchLanguage(language) {
 	loadLanguage(globalLang);
 }
 
-function globalShowError(frame, wrapper, master, global, key) {
-	let errMsg = getTranslations(master, global, key);
-
-	frame.$(wrapper).classList.add('error');
-	frame.$(wrapper).firstElementChild.textContent = 'Error: ' + errMsg;
-}
-
 function debounce(func, wait) {
     let timeout;
     return function() {
@@ -130,6 +123,13 @@ function debounce(func, wait) {
 // Using debouncing to prevent excessive calls to applyTranslations
 window.addEventListener('resize', debounce(applyTranslations, 100));
 // TRANSLATIONS - END
+
+function globalShowError(frame, wrapper, master, global, key) {
+	let errMsg = getTranslations(master, global, key);
+
+	frame.$(wrapper).classList.add('error');
+	frame.$(wrapper).firstElementChild.textContent = 'Error: ' + errMsg;
+}
 
 // MSGBOX - START
 function showMsgbox(title, message) {
