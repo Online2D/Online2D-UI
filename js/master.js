@@ -17,7 +17,6 @@ frameElement.on('complete', function() {
 
 // TRANSLATIONS - START
 function loadJSON(filePath, callback) {
-    // Check if the translation is already in cache
     if (translationCache[filePath]) {
         callback(translationCache[filePath]);
     } else {
@@ -29,7 +28,7 @@ function loadJSON(filePath, callback) {
                 return response.json();
             })
             .then(data => {
-                translationCache[filePath] = data; // Cache the translation
+                translationCache[filePath] = data;
                 callback(data);
             })
             .catch(error => console.error('There was a problem with the fetch operation:', error));
@@ -47,7 +46,6 @@ function getNestedValue(obj, path) {
 }
 
 function applyTranslations() {
-    // Target elements with data-translate attribute
     let elements = document.querySelectorAll("[data-translate]");
     let frameElements = frameElement.frame.document.querySelectorAll("[data-translate]");
 
@@ -61,12 +59,12 @@ function applyTranslations() {
     allElements.forEach(function(element) {
         if (element.childNodes && element.childNodes.length > 0) {
             Array.from(element.childNodes).forEach(function(child) {
-                if (child.nodeType === Node.TEXT_NODE) { // Node.TEXT_NODE
+                if (child.nodeType === Node.TEXT_NODE) {
                     let textContent = child.nodeValue;
                     let matches = textContent.match(/{([^}]+)}/g);
                     if (matches) {
                         matches.forEach(function(match) {
-                            let key = match.slice(1, -1); // Remove the {}
+                            let key = match.slice(1, -1);
                             let translation = getNestedValue(globalTranslation, key);
                             if (translation) {
                                 textContent = textContent.replace(match, translation);
@@ -81,7 +79,6 @@ function applyTranslations() {
         }
     });
 
-    // Process updates in batches with an optimal size
     function processBatch(updates, batchSize) {
         if (updates.length === 0) {
             return;
@@ -97,11 +94,9 @@ function applyTranslations() {
 
         document.body.appendChild(fragment);
 
-        // Schedule the next batch
         requestAnimationFrame(() => processBatch(updates, batchSize));
     }
 
-    // Start processing updates with a batch size of 1
     processBatch(updates, 1);
 }
 
