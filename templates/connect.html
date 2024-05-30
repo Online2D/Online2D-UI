@@ -15,16 +15,16 @@
                 <button id="account_settings" class="button"></button>
 
                 <div class="centered">
-                    <h1 data-dictionary="master.global.name"></h1>
+                    <h1 data-translate>{master.global.name}</h1>
 
                     <div class="connect-wrapper small-border">
                         <div class="field">
-                            <span data-dictionary="frame.connect.username" class="title"></span>
+                            <span class="title" data-translate>{frame.connect.username}</span>
                             <input class="center-input" type="text" name="account" autofocus>
                         </div>
 
                         <div class="field">
-                            <span data-dictionary="frame.connect.password" class="title"></span>
+                            <span class="title" data-translate>{frame.connect.password}</span>
                             <input class="center-input" type="password" name="password">
                         </div>
 
@@ -34,10 +34,10 @@
                     </div>
 
                     <div class="button-wrapper">
-                        <button data-dictionary="frame.connect.create_button" id="create_account" class="button"></button>
-                        <button data-dictionary="frame.connect.enter_button" id="login" class="button"></button>
-                        <a data-dictionary="frame.connect.recover_button" class="button" href="#" target="@system"></a>
-                        <button data-dictionary="frame.connect.exit_button" id="exit" class="button"></button>
+                        <button id="create_account" class="button" data-translate>{frame.connect.create_button}</button>
+                        <button id="login" class="button" data-translate>{frame.connect.enter_button}</button>
+                        <a class="button" href="#" target="@system" data-translate>{frame.connect.recover_button}</a>
+                        <button id="exit" class="button" data-translate>{frame.connect.exit_button}</button>
                     </div>
                 </div>
             </div>
@@ -47,38 +47,38 @@
             <div class="create-account">
                 <div class="wrapper">
                     <div class="header">
-                        <span data-dictionary="frame.create_account.title" class="title"></span>
+                        <span class="title" data-translate>{frame.create_account.title}</span>
 
                         <button class="mini-button" tabindex="-1">x</button>
                     </div>
 
                     <div class="field">
-                        <span data-dictionary="frame.create_account.username" class="title"></span>
+                        <span class="title" data-translate>{frame.create_account.username}</span>
                         <input class="center-input" type="text" name="username">
                     </div>
 
                     <div class="field">
-                        <span data-dictionary="frame.create_account.email" class="title"></span>
+                        <span class="title" data-translate>{frame.create_account.email}</span>
                         <input class="center-input" type="text" name="email">
                     </div>
 
                     <div class="field">
-                        <span data-dictionary="frame.create_account.password" class="title"></span>
+                        <span class="title" data-translate>{frame.create_account.password}</span>
                         <input class="center-input" type="password" name="password">
                     </div>
 
                     <div class="field">
-                        <span data-dictionary="frame.create_account.repeat_password" class="title"></span>
+                        <span class="title" data-translate>{frame.create_account.repeat_password}</span>
                         <input class="center-input" type="password" name="confirm_password">
                     </div>
 
                     <div class="special-field">
                         <input id="tos" class="center-input" type="checkbox" name="tos">
                         <label for="tos">
-                            <span data-dictionary="frame.create_account.tos_one"></span>
-                            <a data-dictionary="frame.create_account.tandc" href='' target='_blank'></a>
-                            <span data-dictionary="frame.create_account.tos_two"></span>
-                            <span data-dictionary="master.global.name"></span>
+                            <span data-translate>{frame.create_account.tos_one}</span>
+                            <a href='' target='_blank' data-translate>{frame.create_account.tandc}</a>
+                            <span data-translate>{frame.create_account.tos_two}</span>
+                            <span data-translate>{master.global.name}</span>
                         </label>
                     </div>
 
@@ -86,7 +86,7 @@
                         <p></p>
                     </div>
 
-                    <button data-dictionary="frame.create_account.create_button" id="account_create" class="button"></button>
+                    <button id="account_create" class="button" data-translate>{frame.create_account.create_button}</button>
                 </div>
             </div>
         </div>

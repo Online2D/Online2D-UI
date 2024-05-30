@@ -47,15 +47,15 @@ function getNestedValue(obj, path) {
 }
 
 function applyTranslations() {
-    let elements = document.querySelectorAll("*");
-    let frameElements = frameElement.frame.document.querySelectorAll("*");
+    // Target elements with data-translate attribute
+    let elements = document.querySelectorAll("[data-translate]");
+    let frameElements = frameElement.frame.document.querySelectorAll("[data-translate]");
 
     let allElements = elements;
     if (frameElements) {
         allElements = Array.from(elements).concat(Array.from(frameElements));
     }
 
-    let fragment = document.createDocumentFragment();
     let updates = [];
 
     allElements.forEach(function(element) {
@@ -101,7 +101,7 @@ function applyTranslations() {
         requestAnimationFrame(() => processBatch(updates, batchSize));
     }
 
-    // Start processing updates with a batch size of 10
+    // Start processing updates with a batch size of 1
     processBatch(updates, 1);
 }
 
