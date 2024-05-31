@@ -1,8 +1,7 @@
 {
     "master": {
         "global": {
-            "name": "Argentum",
-            "website": "www.argentum.com"
+            "name": "Argentum"
         },
         "classes": {
             "warrior": "Guerrero",
