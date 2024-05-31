@@ -126,18 +126,12 @@
 }
 
 .create-account .wrapper {
-	width: 100%;
-	height: 100%;
-	flow: vertical;
-	position: relative;
-}
-
-.create-account .wrapper {
     width: *;
     height: * !important;
 	max-height: max-content;
-    flow: vertical;
-    display: block;
+	flow: vertical;
+	display: block;
+	position: relative;
 }
 
 .create-account .wrapper .header {

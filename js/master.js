@@ -5,7 +5,7 @@ let globalTranslation; // holds the JSON file with the translation
 let translationCache = {};
 
 // Sets the default language
-document.on("ready", function() {
+document.on('ready', function() {
 	setDefaultLanguage(globalLang);
 	loadLanguage(globalLang);
 });
@@ -88,8 +88,10 @@ function applyTranslations() {
         let batch = updates.splice(0, batchSize);
 
         batch.forEach(function(update) {
-            let newNode = document.createTextNode(update.textContent);
-            update.child.parentNode.replaceChild(newNode, update.child);
+            if (update.child.parentNode) {
+                let newNode = document.createTextNode(update.textContent);
+                update.child.parentNode.replaceChild(newNode, update.child);
+            }
         });
 
         document.body.appendChild(fragment);

@@ -18,7 +18,7 @@
                     <h2 data-translate>{frame.account.character_list}</h2>
 
                     <div class="characters-wrapper">
-                        <div class="char selected">
+                        <div class="char">
                             <span class="name">Nombre</span>
 
                             <div class="char-info">
@@ -49,7 +49,7 @@
 
                     <div class="button-wrapper">
                         <button class="button" data-translate>{frame.account.create_new_character_button}</button>
-                        <button class="button" data-translate>{frame.account.delete_character_button}</button>
+                        <button id="delete_character" class="button" data-translate>{frame.account.delete_character_button}</button>
                         <button class="button" data-translate>{frame.account.logout_button}</button>
                     </div>
                 </div>
@@ -57,52 +57,25 @@
         </div>
 
         <div class="modal">
-            <div class="change-pw small-border">
-                <div class="wrapper">
-                    <div class="header">
-                        <span class="title">Cambiar contraseña</span>
-            
-                        <button id="change_password_x" class="mini-button" tabindex="-1">x</button>
-                    </div>
-            
-                    <div class="field">
-                        <span class="title">Contraseña anterior:</span>
-                        <input class="center-input" type="password" name="old_password">
-                    </div>
-            
-                    <div class="field">
-                        <span class="title">Nueva contraseña:</span>
-                        <input class="center-input" type="password" name="new_password">
-                    </div>
-            
-                    <div class="field">
-                        <span class="title">Repetir nueva contraseña:</span>
-                        <input class="center-input" type="password" name="confirm_password">
-                    </div>
-            
-                    <div class="button-wrapper">
-                        <button id="change_password_cancel" class="button">Cancelar</button>
-                        <button id="change_password_confirm" class="button">Confirmar</button>
-                    </div>
-                </div>
-            </div>
-
             <div class="del-char small-border">
                 <div class="wrapper">
                     <div class="header">
-                        <span class="title">Borrar personaje</span>
+                        <span class="title" data-translate>{frame.account.delete_character}</span>
             
                         <button id="delete_char_x" class="mini-button" tabindex="-1">x</button>
                     </div>
+
+                    <p data-translate>{frame.account.are_you_sure} <b></b>?</p>
             
-                    <p>Escribí tu token para borrar tu personaje:</p>
+                    <p class="title" data-translate>{frame.account.enter_password}</p>
             
-                    <input class="center-input" type="password" password-char="#" name="token">
+                    <input class="center-input" type="password" password-char="*" name="password">
             
-                    <div class="button-wrapper">
-                        <button id="delete_char_cancel" class="button">Cancelar</button>
-                        <button id="delete_character_confirm" class="button">Confirmar</button>
+                    <div class="system">
+                        <p data-translate></p>
                     </div>
+
+                    <button id="delete_character_confirm" class="button" data-translate>{frame.account.confirm_button}</button>
                 </div>
             </div>
         </div>

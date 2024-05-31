@@ -41,9 +41,14 @@
         "account": {
             "character_list": "Characters list",
             "level": "Level",
+            "delete_character": "Delete character",
+            "are_you_sure": "Are you sure to delete the character",
+            "enter_password": "Enter your password to delete your character:",
+            "confirm_button": "Delete my character",
             "create_new_character_button": "Create new character",
             "delete_character_button": "Delete character",
-            "logout_button": "Log out"
+            "logout_button": "Log out",
+            "error_empty_password": "you need to enter your password to delete a character."
         }
     }
 }

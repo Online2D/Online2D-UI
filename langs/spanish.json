@@ -41,9 +41,14 @@
         "account": {
             "character_list": "Lista de personajes",
             "level": "Nivel",
+            "delete_character": "Borrar personaje",
+            "are_you_sure": "Estás seguro de borrar el personaje",
+            "enter_password": "Ingresa tu contraseña para borrar el personaje:",
+            "confirm_button": "Borrar mi personaje",
             "create_new_character_button": "Crear nuevo personaje",
             "delete_character_button": "Borrar personaje",
-            "logout_button": "Cerrar sesión"
+            "logout_button": "Cerrar sesión",
+            "error_empty_password": "debes ingresar tu contraseña para eliminar el personaje."
         }
     }
 }
