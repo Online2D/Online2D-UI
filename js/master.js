@@ -173,7 +173,7 @@ function changeView(frame, view) {
 	if (frame === '#submain') {
 		subFrameElement.frame.loadFile(view);
 	} else {
-		document.$('#main').frame.loadFile(view);
+		frameElement.frame.loadFile(view);
 	}
 }
 

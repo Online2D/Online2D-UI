@@ -53,7 +53,7 @@ document.on('ready',function() {
             return;
         }
         
-        if (!parentWindow.isEmail(email)) {
+        if (!isEmail(email)) {
             globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_invalid_email');
             return;
         }
