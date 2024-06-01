@@ -29,6 +29,9 @@ document.on('ready',function() {
         const password = document.$('.modal .create-account .field input[name="password"]').value;
         const confirmPassword = document.$('.modal .create-account .field input[name="confirm_password"]').value;
         const tos = document.$('.modal .create-account .special-field input[name="tos"]').checked;
+
+        document.$('.modal .create-account .system').classList.remove('error');
+        document.$('.modal .create-account .system p').textContent = '';
     
         if (username.length === 0 || email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
             globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_empty_field');
@@ -68,6 +71,9 @@ document.on('ready',function() {
     document.$('#login').on('click', function() {
         const username = document.$('.connect-wrapper .field input[name="account"]').value;
         const password = document.$('.connect-wrapper .field input[name="password"]').value;
+
+        document.$('.connect-wrapper .system').classList.remove('error');
+        document.$('.connect-wrapper .system p').textContent = '';
 
         if (username.length === 0 || password.length === 0) {
             globalShowError(document, '.connect-wrapper .system', 'frame', 'connect', 'error_empty_fields');
