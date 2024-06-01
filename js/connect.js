@@ -34,9 +34,19 @@ document.on('ready',function() {
             globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_empty_field');
             return;
         }
+
+        if (username.length < 4 && username.length > 20) {
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_characters_username');
+            return;
+        }
         
         if (password !== confirmPassword) {
             globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_password_not_match');
+            return;
+        }
+
+        if (password.length < 6 && password.length > 18) {
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_characters_password');
             return;
         }
         
@@ -60,8 +70,17 @@ document.on('ready',function() {
         const password = document.$('.connect-wrapper .field input[name="password"]').value;
 
         if (username.length === 0 || password.length === 0) {
-            // showMsgbox('Error', 'Debes completar todos los campos para ingresar a tu cuenta.');
             globalShowError(document, '.connect-wrapper .system', 'frame', 'connect', 'error_empty_fields');
+            return;
+        }
+
+        if (username.length < 4 && username.length > 20) {
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'connect', 'error_characters_username');
+            return;
+        }
+
+        if (password.length < 6 && password.length > 18) {
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'connect', 'error_characters_password');
             return;
         }
         
