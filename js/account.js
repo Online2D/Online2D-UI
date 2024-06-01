@@ -26,16 +26,6 @@ document.on('ready', function() {
         }
     });
 
-    // Adds highlight to delete character button
-    document.$('.modal .del-char .wrapper input[name="password"]').on('focus-in', function() {
-        document.$('#delete_character_confirm').classList.add('marked');
-    });
-
-    // Removes highlight to delete character button
-    document.$('.modal .del-char .wrapper input[name="password"]').on('focus-out', function() {
-        document.$('#delete_character_confirm').classList.remove('marked');
-    });
-
     // Close delete character modal
     document.$('.modal .del-char .wrapper .header .mini-button').on('click', function() {
         document.$('.modal .del-char input[name="password"]').value = '';

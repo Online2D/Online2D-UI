@@ -22,16 +22,6 @@ document.on('ready',function() {
         document.$('.modal').classList.remove('active');
     });
 
-    // Adds highlight to create account button
-    document.$('.modal .create-account .wrapper input[name="confirm_password"]').on('focus-in', function() {
-        document.$('#account_create').classList.add('marked');
-    });
-
-    // Removes highlight to create account button
-    document.$('.modal .create-account .wrapper input[name="confirm_password"]').on('focus-out', function() {
-        document.$('#account_create').classList.remove('marked');
-    });
-
     // Create account button action
     document.$('#account_create').on('click', function() {
         const username = document.$('.modal .create-account .field input[name="username"]').value;
@@ -60,7 +50,7 @@ document.on('ready',function() {
             return;
         }
     
-        Window.this.xcall('vb_AccountCreate', username, email, password, token);
+        Window.this.xcall('doAccountCreate', username, password, email);
     });
     // CREATE ACCOUNT - END
 
@@ -75,22 +65,11 @@ document.on('ready',function() {
             return;
         }
         
-        Window.this.xcall('vb_AccountLogin', username, password);
+        Window.this.xcall('doAccountLogin', username, password);
     });
 
     // Exit button action
     document.$('#exit').on('click', function() {
-        Window.this.xcall('vb_Exit');
+        Window.this.xcall('doExit');
     });
-
-    // Adds highlight to login button
-    document.$('.connect-wrapper .field input[name="password"]').on('focus-in', function() {
-        document.$('#login').classList.add('marked');
-    });
-
-    // Removes highlight to login button
-    document.$('.connect-wrapper .field input[name="password"]').on('focus-out', function() {
-        document.$('#login').classList.remove('marked');
-    });
-    
 });
