@@ -1,5 +1,15 @@
 document.on('ready',function() {
 
+    function showAccountLoginError(message) {
+        globalShowError(document, '.connect-wrapper .system', 'frame', 'connect', message);
+        return;
+    }
+
+    function showAccountCreateError(message) {
+        globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', message);
+        return;
+    }
+
     // CREATE ACCOUNT - START
     // Open create account modal
     document.$('#create_account').on('click', function() {
