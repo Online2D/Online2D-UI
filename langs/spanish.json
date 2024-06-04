@@ -22,7 +22,9 @@
             "exit_button": "Salir",
             "error_empty_fields": "debes completar todos los campos para ingresar a tu cuenta.",
             "error_characters_username": "el nombre de usuario debe contener un mínimo de 4 caracteres y hasta un máximo de 20.",
-            "error_characters_password": "la contraseña debe contener un mínimo de 6 caracteres y hasta un máximo de 18."
+            "error_characters_password": "la contraseña debe contener un mínimo de 6 caracteres y hasta un máximo de 18.",
+            "error_login_mismatch": "la contraseña no coincide con la de esta cuenta.",
+            "error_login_unknown": "error desconocido, póngase en contacto con soporte."
         },
         "create_account": {
             "title": "Crear nueva cuenta",
@@ -39,7 +41,8 @@
             "error_invalid_email": "dirección de email inválida, prueba con otra.",
             "error_tos_not_accepted": "debes aceptar los términos y condiciones para crear una cuenta.",
             "error_characters_username": "el nombre de usuario debe contener un mínimo de 4 caracteres y hasta un máximo de 20.",
-            "error_characters_password": "la contraseña debe contener un mínimo de 6 caracteres y hasta un máximo de 18."
+            "error_characters_password": "la contraseña debe contener un mínimo de 6 caracteres y hasta un máximo de 18.",
+            "error_login_exist": "ya existe un usuario con ese nombre, utiliza otro nombre de usuario por favor."
         },
         "account": {
             "character_list": "Lista de personajes",
