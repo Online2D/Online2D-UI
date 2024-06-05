@@ -24,7 +24,8 @@
             "error_characters_username": "username must have a minimum of 4 characters and a maximum of 20.",
             "error_characters_password": "password must have a minimum of 6 characters and a maximum of 18.",
             "error_login_mismatch": "password doesn't match this account.",
-            "error_login_unknown": "uknown error, please contact support."
+            "error_login_unknown": "uknown error, please contact support.",
+	    "error_connection": "server offline"
         },
         "create_account": {
             "title": "Create new account",
@@ -42,7 +43,8 @@
             "error_tos_not_accepted": "you must accept the terms and conditions to create an account.",
             "error_characters_username": "username must have a minimum of 4 characters and a maximum of 20.",
             "error_characters_password": "password must have a minimum of 6 characters and a maximum of 18.",
-            "error_login_exist": "this username already exists please use another one."
+            "error_login_exist": "this username already exists please use another one.",
+	    "error_connection": "server offline"
         },
         "account": {
             "character_list": "Characters list",
