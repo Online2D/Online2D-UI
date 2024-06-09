@@ -52,4 +52,9 @@ document.on('ready', function() {
         // Window.this.xcall('', username, email, password, token);
     });
 
+    // Logout button action
+    document.$('#logout').on('click', function() {
+        Window.this.xcall('doLobbyLogout');
+    });
+
 });

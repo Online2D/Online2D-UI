@@ -91,7 +91,7 @@ document.on('ready',function() {
             return;
         }
         
-        Window.this.xcall('doAccountLogin', username, password);
+        Window.this.xcall('doAccountLogin', username, password, 5);
     });
 
     // Exit button action
