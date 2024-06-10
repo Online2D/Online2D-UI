@@ -183,22 +183,55 @@ function setMainScreen(view) {
 
 function showAccountLoginError(message) {
 	globalShowError(frameElement.frame.document, '.connect-wrapper .system', 'frame', 'connect', message);
-        return;
+    return;
 }
 
 function showAccountCreateError(message) {
-        globalShowError(frameElement.frame.document, '.modal .create-account .wrapper .system', 'frame', 'create_account', message);
-        return;
+    globalShowError(frameElement.frame.document, '.modal .create-account .wrapper .system', 'frame', 'create_account', message);
+    return;
 }
 
-function setCharacterInLobby(Index, Name, Level, Class, Location)
-{
-	// CUANDO CARGAMOS LOS CHARACTER (Int, String, Int, String, String)
+function setCharacterInLobby(id, name, level, cClass, cLocation) {
+    // CUANDO CARGAMOS LOS CHARACTER (Int, String, Int, String, String)
+    frameElement.on('complete', function() {
+        const father = frameElement.frame.document.globalThis.document.$('.characters-wrapper');
+        const fragment = document.createDocumentFragment();
+        const div = document.createElement('div');
+        div.className = 'char';
+
+        div.innerHTML = `<input class="hidden" type="number" value="${id}">
+        <span class="name">${name}</span>
+
+        <div class="char-info">
+            <div class="char-level">
+                <span data-translate>{frame.account.level}</span>
+                <span>${level}</span>
+            </div>
+            <span class="class" data-translate>${cClass}</span>
+        </div>
+
+        <span class="location" data-translate>${cLocation}</span>`;
+
+        fragment.appendChild(div);
+    
+        father.appendChild(fragment);
+    });
 }
 
-function removeCharacterInLobby(Index)
-{
-	// CUANDO EL SERVIDOR NO HA DICHO QUE SE HA REMOVIDO (Int)
+function removeCharacterInLobby(id) {
+    // CUANDO EL SERVIDOR NO HA DICHO QUE SE HA REMOVIDO (Int)
+    frameElement.on('contentchange', function() {
+        let allChars = frameElement.frame.document.globalThis.document.$$('.char');
+
+        allChars.forEach(function(char) {
+            let charId = char.children.item('0').value;
+
+            if(charId == id) {
+                char.remove();
+                return;
+            }
+        });
+    });
 }
 
 function isEmail(email) {
