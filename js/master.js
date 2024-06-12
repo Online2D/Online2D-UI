@@ -78,7 +78,7 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
         let currentClass = getTranslatedMessage(cClass);
         let currentLocation = getTranslatedMessage(cLocation);
 
-        div.innerHTML = `<input class="hidden" type="number" value="${id}">
+        div.innerHTML = `<input class="hidden" type="number" name="char_id" value="${id}">
         <span class="name">${name}</span>
 
         <div class="char-info">
@@ -96,6 +96,8 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
         father.appendChild(fragment);
     });
 }
+
+setCharacterInLobby('1', 'Jorge', '50', 'warrior', 'ullathorpe');
 
 function removeCharacterInLobby(id) {
     // CUANDO EL SERVIDOR NO HA DICHO QUE SE HA REMOVIDO (Int)

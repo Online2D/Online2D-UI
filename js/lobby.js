@@ -39,6 +39,7 @@ document.on('ready', function() {
 
     // Delete character button action
     document.$('#delete_character_confirm').on('click', function() {
+        const charId = document.$('.char.selected input[name="char_id"]').value;
         const password = document.$('.modal .del-char input[name="password"]').value;
         
         if (password.length === 0) {
