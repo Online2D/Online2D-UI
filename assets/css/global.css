@@ -370,6 +370,10 @@ body .over-main-modal.active {
   	background: var(--mini-button-hover-bg);
 }
 
+.button:disabled {
+	background: var(--disabled-bg);
+}
+
 .button.marked {
 	color: var(--white);
 	background: var(--mini-button-hover-bg);

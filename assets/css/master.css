@@ -47,6 +47,7 @@
     --mini-button-border-bg: #61534f;
     --mini-button-shadow: #231b19;
     --mini-button-hover-bg: #640909;
+	--disabled-bg: #3d3d3d;
 
     --small-border-bg: #231b19;
     --small-border-shadow: var(--black);

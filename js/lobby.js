@@ -1,5 +1,15 @@
 document.on('ready', function() {
 
+    function enableButtons() {
+        document.$('#connect_character').state.disabled = false;
+        document.$('#delete_character').state.disabled = false;
+    }
+
+    function disableButtons() {
+        document.$('#connect_character').state.disabled = true;
+        document.$('#delete_character').state.disabled = true;
+    }
+
     // Mark character as selected
     document.on('click', '.char', function(e, t) {
         let allChars = document.querySelectorAll('.char');
@@ -9,6 +19,7 @@ document.on('ready', function() {
         });
 
         t.classList.add('selected');
+        enableButtons();
     });
 
     // Open delete character modal
@@ -56,5 +67,7 @@ document.on('ready', function() {
     document.$('#logout').on('click', function() {
         Window.this.xcall('doLobbyLogout');
     });
+
+
 
 });
