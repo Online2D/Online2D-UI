@@ -68,7 +68,6 @@ function showAccountCreateError(message) {
 }
 
 function setCharacterInLobby(id, name, level, cClass, cLocation) {
-    // CUANDO CARGAMOS LOS CHARACTER (Int, String, Int, String, String)
     frameElement.on('complete', function() {
         const father = frameElement.frame.document.globalThis.document.$('.characters-wrapper');
         const fragment = document.createDocumentFragment();
@@ -97,10 +96,7 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
     });
 }
 
-setCharacterInLobby('1', 'Jorge', '50', 'warrior', 'ullathorpe');
-
 function removeCharacterInLobby(id) {
-    // CUANDO EL SERVIDOR NO HA DICHO QUE SE HA REMOVIDO (Int)
     frameElement.on('contentchange', function() {
         let allChars = frameElement.frame.document.globalThis.document.$$('.char');
 
