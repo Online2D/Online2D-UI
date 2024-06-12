@@ -133,3 +133,7 @@ frameElement.on("document-created", function(event) {
     newDocument.globalThis.changeView = changeView;
     newDocument.globalThis.isEmail = isEmail;
 });
+
+globalThis.setMainScreen = setMainScreen;
+globalThis.showAccountLoginError = showAccountLoginError;
+globalThis.showAccountCreateError = showAccountCreateError
