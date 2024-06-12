@@ -58,12 +58,12 @@ function setMainScreen(view) {
 }
 
 function showAccountLoginError(message) {
-	globalShowError(frameElement.frame.document, '.connect-wrapper .system', 'frame', 'connect', message);
+    globalShowError(frameElement.frame.document, '.connect-wrapper .system', message);
     return;
 }
 
 function showAccountCreateError(message) {
-    globalShowError(frameElement.frame.document, '.modal .create-account .wrapper .system', 'frame', 'create_account', message);
+    globalShowError(frameElement.frame.document, '.modal .create-account .wrapper .system', message);
     return;
 }
 
