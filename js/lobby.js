@@ -42,7 +42,7 @@ document.on('ready', function() {
         const password = document.$('.modal .del-char input[name="password"]').value;
         
         if (password.length === 0) {
-            globalShowError(document, '.modal .del-char .wrapper .system', 'account.error_empty_password');
+            globalShowError(document, '.modal .del-char .wrapper .system', 'account_error_1');
             return;
         }
 

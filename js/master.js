@@ -83,13 +83,13 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
 
         <div class="char-info">
             <div class="char-level">
-                <span.x>global.level</span>
+                <span.x>level</span>
                 <span>${level}</span>
             </div>
-            <span class="class" data-translate>${currentClass}</span>
+            <span class="class">${currentClass}</span>
         </div>
 
-        <span class="location" data-translate>${currentLocation}</span>`;
+        <span class="location">${currentLocation}</span>`;
 
         fragment.appendChild(div);
     
