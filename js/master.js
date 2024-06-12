@@ -83,7 +83,7 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
 
         <div class="char-info">
             <div class="char-level">
-                <span.x>frame.account.level</span>
+                <span.x>global.level</span>
                 <span>${level}</span>
             </div>
             <span class="class" data-translate>${currentClass}</span>
