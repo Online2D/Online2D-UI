@@ -71,6 +71,7 @@
 	--window-corner: url("../images/ui/window/wc.png");
 	--connect-bg: url('../images/backgrounds/connect.jpg');
 	--settings-bg: url('../images/ui/window/cog.png');
+	--exit-bg: url('../images/ui/window/exit.png');
     
 	font-family: var(--font);
 	font-size: 16px;

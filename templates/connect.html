@@ -3,6 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../assets/css/connect.css">
+        <style>@import url(../assets/css/lang.css);</style>
+        <script|module>
+            import {setLang} from "../js/lang.js";
+
+            document.on("change", "form", function(evt, form) {
+                setLang(form.value.lang);
+            });
+        </script>
     </head>
     <body>
         <div class="window big-border">
@@ -13,31 +21,30 @@
 
             <div class="wrapper">
                 <button id="account_settings" class="button"></button>
+                <button id="exit" class="button"></button>
 
                 <div class="centered">
-                    <h1 data-translate>{master.global.name}</h1>
+                    <h1.x>master.global.name</h1>
 
                     <div class="connect-wrapper small-border">
                         <div class="field">
-                            <span class="title" data-translate>{frame.connect.username}</span>
+                            <span.x class="title">frame.connect.username</span>
                             <input class="center-input" type="text" name="account" autofocus>
                         </div>
 
                         <div class="field">
-                            <span class="title" data-translate>{frame.connect.password}</span>
+                            <span.x class="title">frame.connect.password</span>
                             <input class="center-input" type="password" name="password">
                         </div>
 
                         <div class="system">
-                            <p></p>
+                            <p.x></p>
                         </div>
                     </div>
 
                     <div class="button-wrapper">
-                        <button id="create_account" class="button" data-translate>{frame.connect.create_button}</button>
-                        <button id="login" class="button" data-translate>{frame.connect.enter_button}</button>
-                        <a class="button" href="#" target="@system" data-translate>{frame.connect.recover_button}</a>
-                        <button id="exit" class="button" data-translate>{frame.connect.exit_button}</button>
+                        <button.x id="create_account" class="button">frame.connect.create_button</button>
+                        <button.x id="login" class="button">frame.connect.enter_button</button>
                     </div>
                 </div>
             </div>
@@ -47,46 +54,46 @@
             <div class="create-account">
                 <div class="wrapper">
                     <div class="header">
-                        <span class="title" data-translate>{frame.create_account.title}</span>
+                        <span.x class="title">frame.create_account.title</span>
 
                         <button class="mini-button" tabindex="-1">x</button>
                     </div>
 
                     <div class="field">
-                        <span class="title" data-translate>{frame.create_account.username}</span>
+                        <span.x class="title">frame.create_account.username</span>
                         <input class="center-input" type="text" name="username">
                     </div>
 
                     <div class="field">
-                        <span class="title" data-translate>{frame.create_account.email}</span>
+                        <span.x class="title">frame.create_account.email</span>
                         <input class="center-input" type="text" name="email">
                     </div>
 
                     <div class="field">
-                        <span class="title" data-translate>{frame.create_account.password}</span>
+                        <span.x class="title">frame.create_account.password</span>
                         <input class="center-input" type="password" name="password">
                     </div>
 
                     <div class="field">
-                        <span class="title" data-translate>{frame.create_account.repeat_password}</span>
+                        <span.x class="title" data-translate>frame.create_account.repeat_password</span>
                         <input class="center-input" type="password" name="confirm_password">
                     </div>
 
                     <div class="special-field">
                         <input id="tos" class="center-input" type="checkbox" name="tos">
                         <label for="tos">
-                            <span data-translate>{frame.create_account.tos_one}</span>
-                            <a href='' target='_blank' data-translate>{frame.create_account.tandc}</a>
-                            <span data-translate>{frame.create_account.tos_two}</span>
-                            <span data-translate>{master.global.name}</span>
+                            <span.x>frame.create_account.tos_one</span>
+                            <a.x href='' target='_blank'>frame.create_account.tandc</a>
+                            <span.x>frame.create_account.tos_two</span>
+                            <span.x>master.global.name</span>
                         </label>
                     </div>
 
                     <div class="system">
-                        <p></p>
+                        <p.x></p>
                     </div>
 
-                    <button id="account_create" class="button" data-translate>{frame.create_account.create_button}</button>
+                    <button.x id="account_create" class="button">frame.create_account.create_button</button>
                 </div>
             </div>
         </div>

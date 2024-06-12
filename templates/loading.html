@@ -3,6 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../assets/css/loading.css">
+        <style>@import url(../assets/css/lang.css);</style>
+        <script|module>
+            import {setLang} from "../js/lang.js";
+
+            document.on("change", "form", function(evt, form) {
+                setLang(form.value.lang);
+            });
+        </script>
     </head>
     <body>
         <div class="window big-border">
@@ -13,7 +21,7 @@
 
             <div class="wrapper">
                 <div class="centered">
-                    <h1 data-translate>{master.global.name}</h1>
+                    <h1.x>master.global.name</h1>
 
                     <div class="bar-wrapper">
                         <span class="description">Loading anything</span>

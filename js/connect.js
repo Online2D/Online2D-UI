@@ -1,6 +1,5 @@
 document.on('ready',function() {
 
-
     // CREATE ACCOUNT - START
     // Open create account modal
     document.$('#create_account').on('click', function() {
@@ -35,35 +34,35 @@ document.on('ready',function() {
         document.$('.modal .create-account .system p').textContent = '';
     
         if (username.length === 0 || email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_empty_field');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_empty_field');
             return;
         }
 
         if (username.length < 4 && username.length > 20) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_characters_username');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_characters_username');
             return;
         }
         
         if (password !== confirmPassword) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_password_not_match');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_password_not_match');
             return;
         }
 
         if (password.length < 6 && password.length > 18) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_characters_password');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_characters_password');
+            return;
+        }
+
+        if (tos === false) {
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_tos_not_accepted');
             return;
         }
         
         if (!isEmail(email)) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_invalid_email');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.create_account.error_invalid_email');
             return;
         }
-    
-        if (tos.checked === false) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'create_account', 'error_tos_not_accepted');
-            return;
-        }
-    
+
         Window.this.xcall('doAccountCreate', username, password, email);
     });
     // CREATE ACCOUNT - END
@@ -77,17 +76,17 @@ document.on('ready',function() {
         document.$('.connect-wrapper .system p').textContent = '';
 
         if (username.length === 0 || password.length === 0) {
-            globalShowError(document, '.connect-wrapper .system', 'frame', 'connect', 'error_empty_fields');
+            globalShowError(document, '.connect-wrapper .system', 'frame.connect.error_empty_fields');
             return;
         }
 
         if (username.length < 4 && username.length > 20) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'connect', 'error_characters_username');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.connect.error_characters_username');
             return;
         }
 
         if (password.length < 6 && password.length > 18) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'frame', 'connect', 'error_characters_password');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'frame.connect.error_characters_password');
             return;
         }
         

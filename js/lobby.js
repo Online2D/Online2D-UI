@@ -16,7 +16,7 @@ document.on('ready', function() {
         let currentChar = document.querySelector('.selected');
         
         if(currentChar !== null) {
-            let currentCharName = currentChar.firstElementChild.innerHTML;
+            let currentCharName = currentChar.firstElementChild.nextElementSibling.innerHTML;
 
             document.$('.modal .del-char p b').textContent = currentCharName;
             document.$('.modal .del-char').classList.add('active');
@@ -38,12 +38,11 @@ document.on('ready', function() {
     });
 
     // Delete character button action
-    // Create account button action
     document.$('#delete_character_confirm').on('click', function() {
         const password = document.$('.modal .del-char input[name="password"]').value;
         
         if (password.length === 0) {
-            globalShowError(document, '.modal .del-char .wrapper .system', 'frame', 'account', 'error_empty_password');
+            globalShowError(document, '.modal .del-char .wrapper .system', 'frame.account.error_empty_password');
             return;
         }
 

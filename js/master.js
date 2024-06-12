@@ -1,148 +1,24 @@
+import { translation } from "lang.js";
+
 let frameElement = document.$('#main');
 let subFrameElement;
-let globalLang = 'english';
-let globalTranslation; // holds the JSON file with the translation
-let translationCache = {};
-
-// Sets the default language
-document.on('ready', function() {
-	setDefaultLanguage(globalLang);
-	loadLanguage(globalLang);
-});
 
 // Load the sub-frame into the variable after the first frame finished to load
 frameElement.on('complete', function() {
 	subFrameElement = frameElement.frame.document.globalThis.document.$('#submain');
 });
 
-// TRANSLATIONS - START
-function loadJSON(filePath, callback) {
-    if (translationCache[filePath]) {
-        callback(translationCache[filePath]);
-    } else {
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                translationCache[filePath] = data;
-                callback(data);
-            })
-            .catch(error => console.error('There was a problem with the fetch operation:', error));
-    }
+// Search translated messages from translation constant and returns them in the current loaded language
+function getTranslatedMessage(key) {
+    return translation[key] || key;
 }
 
-function getNestedValue(obj, path) {
-	if (translationCache[path]) {
-		return translationCache[path];
-	}
+// Show's the error box
+function globalShowError(frame, wrapper, messageKey) {
+    const translatedMessage = getTranslatedMessage(messageKey);
 
-	let value = path.split('.').reduce((o, p) => o ? o[p] : null, obj);
-	translationCache[path] = value;
-	return value;
-}
-
-function applyTranslations() {
-    let elements = document.querySelectorAll("[data-translate]");
-    let frameElements = frameElement.frame.document.querySelectorAll("[data-translate]");
-
-    let allElements = elements;
-    if (frameElements) {
-        allElements = Array.from(elements).concat(Array.from(frameElements));
-    }
-
-    let updates = [];
-
-    allElements.forEach(function(element) {
-        if (element.childNodes && element.childNodes.length > 0) {
-            Array.from(element.childNodes).forEach(function(child) {
-                if (child.nodeType === Node.TEXT_NODE) {
-                    let textContent = child.nodeValue;
-                    let matches = textContent.match(/{([^}]+)}/g);
-                    if (matches) {
-                        matches.forEach(function(match) {
-                            let key = match.slice(1, -1);
-                            let translation = getNestedValue(globalTranslation, key);
-                            if (translation) {
-                                textContent = textContent.replace(match, translation);
-                            }
-                        });
-                        if (child.nodeValue !== textContent) {
-                            updates.push({ child, textContent });
-                        }
-                    }
-                }
-            });
-        }
-    });
-
-    function processBatch(updates, batchSize) {
-        if (updates.length === 0) {
-            return;
-        }
-
-        let fragment = document.createDocumentFragment();
-        let batch = updates.splice(0, batchSize);
-
-        batch.forEach(function(update) {
-            if (update.child.parentNode) {
-                let newNode = document.createTextNode(update.textContent);
-                update.child.parentNode.replaceChild(newNode, update.child);
-            }
-        });
-
-        document.body.appendChild(fragment);
-
-        requestAnimationFrame(() => processBatch(updates, batchSize));
-    }
-
-    processBatch(updates, 1);
-}
-
-function getTranslations(masterKey, globalKey, translationKey) {
-	return globalTranslation[masterKey][globalKey][translationKey];
-}
-
-function loadLanguage(language) {
-	let filePath = "langs/" + language + ".json";
-
-	loadJSON(filePath, function(translations) {
-		globalTranslation = translations;
-		applyTranslations();
-	});
-}
-
-function setDefaultLanguage(language) {
-	globalLang = language;
-}
-
-function switchLanguage(language) {
-	globalLang = language;
-
-	setDefaultLanguage(globalLang);
-	loadLanguage(globalLang);
-}
-
-function debounce(func, wait) {
-    let timeout;
-    return function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(func, wait);
-    };
-}
-
-// Using debouncing to prevent excessive calls to applyTranslations
-window.addEventListener('resize', debounce(applyTranslations, 100));
-// TRANSLATIONS - END
-
-function globalShowError(frame, wrapper, master, global, key) {
-	let errMsg = getTranslations(master, global, key);
-
-	frame.$(wrapper).classList.add('error');
-	frame.$(wrapper).firstElementChild.textContent = 'Error: ' + errMsg;
+    frame.$(wrapper).classList.add('error');
+    frame.$(wrapper).firstElementChild.textContent = 'Error: ' + translatedMessage;
 }
 
 // MSGBOX - START
@@ -199,18 +75,21 @@ function setCharacterInLobby(id, name, level, cClass, cLocation) {
         const div = document.createElement('div');
         div.className = 'char';
 
+        let currentClass = getTranslatedMessage(cClass);
+        let currentLocation = getTranslatedMessage(cLocation);
+
         div.innerHTML = `<input class="hidden" type="number" value="${id}">
         <span class="name">${name}</span>
 
         <div class="char-info">
             <div class="char-level">
-                <span data-translate>{frame.account.level}</span>
+                <span.x>frame.account.level</span>
                 <span>${level}</span>
             </div>
-            <span class="class" data-translate>${cClass}</span>
+            <span class="class" data-translate>${currentClass}</span>
         </div>
 
-        <span class="location" data-translate>${cLocation}</span>`;
+        <span class="location" data-translate>${currentLocation}</span>`;
 
         fragment.appendChild(div);
     
@@ -246,7 +125,6 @@ frameElement.on("document-created", function(event) {
     // Binds functions to the frame
     const newDocument = event.target;
 
-	newDocument.globalThis.switchLanguage = switchLanguage;
 	newDocument.globalThis.globalShowError = globalShowError;
 
     newDocument.globalThis.showMsgbox = showMsgbox;

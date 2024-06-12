@@ -3,6 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../assets/css/lobby.css">
+        <style>@import url(../assets/css/lang.css);</style>
+        <script|module>
+            import {setLang} from "../js/lang.js";
+
+            document.on("change", "form", function(evt, form) {
+                setLang(form.value.lang);
+            });
+        </script>
     </head>
     <body>
         <div class="window big-border">
@@ -12,18 +20,19 @@
             <div class="clr"></div>
 
             <div id="render" class="wrapper">
-                <h1 data-translate>{master.global.name}</h1>
+                <h1.x>master.global.name</h1>
 
                 <div class="characters-panel">
-                    <h2 data-translate>{frame.account.character_list}</h2>
+                    <h2.x>frame.account.character_list</h2>
 
                     <div class="characters-wrapper">
                     </div>
 
                     <div class="button-wrapper">
-                        <button class="button" data-translate>{frame.account.create_new_character_button}</button>
-                        <button id="delete_character" class="button" data-translate>{frame.account.delete_character_button}</button>
-                        <button id="logout" class="button" data-translate>{frame.account.logout_button}</button>
+                        <button.x class="button">frame.account.enter_character_button</button>
+                        <button.x class="button">frame.account.create_new_character_button</button>
+                        <button.x id="delete_character" class="button">frame.account.delete_character_button</button>
+                        <button.x id="logout" class="button">frame.account.logout_button</button>
                     </div>
                 </div>
             </div>
@@ -33,22 +42,22 @@
             <div class="del-char small-border">
                 <div class="wrapper">
                     <div class="header">
-                        <span class="title" data-translate>{frame.account.delete_character}</span>
+                        <span.x class="title">frame.account.delete_character</span>
             
                         <button id="delete_char_x" class="mini-button" tabindex="-1">x</button>
                     </div>
 
-                    <p data-translate>{frame.account.are_you_sure} <b></b>?</p>
+                    <p><span.x>frame.account.are_you_sure</span> <b></b>?</p>
             
-                    <p class="title" data-translate>{frame.account.enter_password}</p>
+                    <p.x class="title">frame.account.enter_password</p>
             
                     <input class="center-input" type="password" password-char="*" name="password">
             
                     <div class="system">
-                        <p data-translate></p>
+                        <p.x></p>
                     </div>
 
-                    <button id="delete_character_confirm" class="button" data-translate>{frame.account.confirm_button}</button>
+                    <button.x id="delete_character_confirm" class="button">frame.account.confirm_button</button>
                 </div>
             </div>
         </div>
