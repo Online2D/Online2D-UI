@@ -34,32 +34,32 @@ document.on('ready',function() {
         document.$('.modal .create-account .system p').textContent = '';
     
         if (username.length === 0 || email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_1');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_empty_fields');
             return;
         }
 
         if (username.length < 4 && username.length > 20) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_2');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_username_characters');
             return;
         }
         
         if (password !== confirmPassword) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_3');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_password_mismatch');
             return;
         }
 
         if (password.length < 6 && password.length > 18) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_4');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_password_characters');
             return;
         }
 
         if (tos === false) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_5');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_tos_not_accepted');
             return;
         }
         
         if (!isEmail(email)) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_6');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'create_account_error_invalid_email');
             return;
         }
 
@@ -76,17 +76,17 @@ document.on('ready',function() {
         document.$('.connect-wrapper .system p').textContent = '';
 
         if (username.length === 0 || password.length === 0) {
-            globalShowError(document, '.connect-wrapper .system', 'connect_error_1');
+            globalShowError(document, '.connect-wrapper .system', 'connect_error_empty_fields');
             return;
         }
 
         if (username.length < 4 && username.length > 20) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'connect_error_2');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'connect_error_username_characters');
             return;
         }
 
         if (password.length < 6 && password.length > 18) {
-            globalShowError(document, '.modal .create-account .wrapper .system', 'connect_error_3');
+            globalShowError(document, '.modal .create-account .wrapper .system', 'connect_error_password_characters');
             return;
         }
         
