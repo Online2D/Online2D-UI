@@ -57,6 +57,10 @@ function setMainScreen(view) {
 	changeView("#main", view);
 }
 
+function setAccountUsername(username) {
+	// TODO
+}
+
 function showAccountLoginError(message) {
     globalShowError(frameElement.frame.document, '.connect-wrapper .system', message);
     return;
@@ -133,5 +137,6 @@ frameElement.on("document-created", function(event) {
 });
 
 globalThis.setMainScreen = setMainScreen;
+globalThis.setAccountUsername = setAccountUsername;
 globalThis.showAccountLoginError = showAccountLoginError;
 globalThis.showAccountCreateError = showAccountCreateError
