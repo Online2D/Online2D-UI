@@ -58,7 +58,9 @@ function setMainScreen(view) {
 }
 
 function setAccountUsername(username) {
-	// TODO
+    frameElement.on('complete', function() {
+	    frameElement.frame.document.$('.connect-wrapper .field input[name="account"]').value = username;
+    });
 }
 
 function showAccountLoginError(message) {
