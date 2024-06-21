@@ -65,7 +65,7 @@ document.on('ready', function() {
 
     // Logout button action
     document.$('#logout').on('click', function() {
-        Window.this.xcall('onLobbyLogout');
+        Window.this.xcall('onAccountExit');
     });
 
 
