@@ -63,7 +63,7 @@ document.on('ready',function() {
             return;
         }
 
-        Window.this.xcall('onAccountCreate', username, password, email);
+        Window.this.xcall('onGatewayCreate', username, password, email);
     });
     // CREATE ACCOUNT - END
 
@@ -90,11 +90,11 @@ document.on('ready',function() {
             return;
         }
         
-        Window.this.xcall('onAccountLogin', username, password, 5);
+        Window.this.xcall('onGatewayLogin', username, password, 5);
     });
 
     // Exit button action
     document.$('#exit').on('click', function() {
-        Window.this.xcall('onAccountExit');
+        Window.this.xcall('onGatewayExit');
     });
 });
